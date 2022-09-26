@@ -2,6 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.agenda)
+    path('', views.agenda, name='agenda')
 ]
 
