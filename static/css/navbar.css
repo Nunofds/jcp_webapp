@@ -1,0 +1,37 @@
+:root{
+    --yellow-25: #DEB31925;
+    --yellow-:#DEB319;
+    --black: #000000;
+}
+
+/*  */
+nav {
+    background: var(--black);
+}
+nav .navbar-brand img{
+    width: 46px;
+    border-radius: 50%;
+}
+nav .connection-icons li{
+    list-style: none;
+}
+nav .connection-icons li a svg:hover{
+    transform: scale(1.1);
+    transition: easy-in .3s;
+}
+.navbar .navbar-nav .nav-item .nav-link{
+    color: var(--yellow-);
+    height: 60px;
+    line-height: 40px;
+}
+.navbar .navbar-nav .nav-item .nav-link:hover{
+    background: var(--yellow-25)
+}
+
+/* MEDIA QUERY */
+@media screen and (max-width: 680px){
+    .collapse .navbar-nav .nav-item {
+        display: block;
+        width: 100%;
+    }
+}

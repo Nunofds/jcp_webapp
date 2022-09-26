@@ -1,0 +1,4 @@
+# files ignored on push
+/venv
+/.idea
+/db.sqlite3

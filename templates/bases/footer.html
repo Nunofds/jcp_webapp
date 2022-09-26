@@ -1,0 +1,44 @@
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+<div class="footer-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 d-flex flex-column">
+                <ul class="d-inline-flex mx-auto">
+                    <li class="p-3"><a href=""><img src="{% static 'icons/facebook.png' %}" alt="logo facebook"></a></li>
+                    <li class="p-3"><a href=""><img src="{% static 'icons/instagram.png' %}" alt="logo instagram"></a></li>
+                    <li class="p-3"><a href=""><img src="{% static 'icons/linkedin.png' %}" alt="logo linkedIn"></a></li>
+                </ul>
+                <ul class="links d-inline-flex mx-auto">
+                    <li class="p-3"><a href="">Accueil</a></li>
+                    <li class="p-3"><a href="">A Propos</a></li>
+                    <li class="p-3"><a href="">Nous Services</a></li>
+                </ul>
+                <ul class="d-inline-flex mx-auto">
+                    <li class="p-3"><a href="">Agenda</a></li>
+                    <li class="p-3"><a href="">Notre Boutique</a></li>
+                    <li class="p-3"><a href="">Contact</a></li>
+                </ul>
+            </div>
+            <div class="coords col-md-4 d-flex flex-column text-center mt-3">
+                <p>Une Urgence?<img src="{% static 'icons/urgence.png' %}" alt="Icône ilustration alerte."></p>
+                <p>+351 258 452 335</p>
+                <p>geral@joaocerqueirapereira.com</p>
+                <p>joaocpereiralda@gmail.com</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2974.235871038348!2d-8.417875784302149!3d41.80167897817175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2508e014be3447%3A0xb4fdc9bcc20baebf!2sJo%C3%A3o%20Cerqueira%20Pereira%20Lda!5e0!3m2!1sfr!2sfr!4v1664143832111!5m2!1sfr!2sfr" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyrigth text-center">
+        <p class="m-0">&copy;João Cerqueira pereira, Lda - Licence nº 51414. 2022. Tous droits réservés.</p>
+        <p class="m-0"><i>Site développé par : <a href="https://nunofernandes-dev.com" target="_blank">nunofernandes-dev.com</a></i></p>
+    </div>
+
+</div>

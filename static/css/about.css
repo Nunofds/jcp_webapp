@@ -1,0 +1,56 @@
+
+/* about section */
+.about, .partners {
+    overflow: hidden;
+    line-height: 1.5em;
+}
+.about h1,
+.partners h2 {
+    color: #DEB319;
+}
+
+.about img{
+    width: 400px;
+}
+
+.about .container .desc{
+    font-size: 16px;
+}
+
+/* parteners section */
+.partners {
+    padding: 60px;
+}
+.partners img{
+    width: 250px;
+}
+
+/* MEDIA QUERY */
+@media screen and (max-width: 1024px){
+    .partners img{
+        width: 150px;
+    }
+
+    .about img{
+        width: 300px;
+    }
+
+    .about .container .desc{
+        font-size: 14px;
+    }
+
+}
+@media screen and (max-width: 992px){
+  .desc, .img {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .about .container .desc{
+        font-size: 12px;
+        text-align: center;
+
+    }
+}

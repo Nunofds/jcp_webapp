@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block styleshets %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<!--about section-->
+<section class="about my-5">
+    <h1 class="text-center mt-5 font-weight-bold">Qui sommes nous ?</h1>
+    <div class="container pt-5">
+        <div class="row my-5">
+            <div class="desc col-md-6 col-sm-12">
+                JOÃO CERQUEIRA PEREIRA, LDA est une entreprise de 45 ans du nord du Portugal. Nous sommes une entreprise
+                familiale qui a fondé sa genèse sur ce principe. Pendant tout ce temps, nous sommes devenus une
+                entreprise expérimentée, assidue, capable et dotée du savoir-faire pour relever tous les défis qui se
+                présentent, compte tenu du secteur d'activité en constante évolution dont nous dépendons tous.
+                JOÃO CERQUEIRA PEREIRA, LDA repose sur certains principes, tels que l'humanisme, la rigueur,
+                l'intégrité, le dévouement, la connaissance, la détermination et la coopération. C'est avec ces
+                principes que nous décrivons notre mission de gérer avec compétence et innovation, en privilégiant les
+                partenariats stratégiques dans une culture d'excellence et de durabilité, d'être une référence de
+                connaissance et de solidité dans notre domaine d'activité, au service avec dévouement et satisfaction de
+                nos clients et le bien-être de nos employés.
+            </div>
+            <div class="img col-md-6  col-sm-12 text-center my-3"><img src="{% static 'images/img1.jpg' %}"
+                                                                       alt="image representative d'un service de l'entreprise">
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="img col-md-6 col-sm-12 text-center my-3"><img src="{% static 'images/img2.jpg' %}"
+                                                                      alt="image representative d'un service de l'entreprise">
+            </div>
+            <div class="desc col-md-6 col-sm-12">
+                Au cours de ces quatre décennies d'activité, nous sommes guidés par les connaissances et la rigueur qui
+                sont fondamentales pour consolider notre position de leader dans le secteur de la construction civile et
+                des travaux publics et dicter le succès de nos projets dans les différents segments d'infrastructures
+                (travaux spéciaux, bâtiments publics, industriel, sportif, hôtelier, logement, entre autres).
+                Nous parions sur le renforcement continu de la structure physique et humaine, en poursuivant
+                l'efficacité et l'excellence des services fournis. Nous sommes l'une des plus anciennes entreprises de
+                notre pays et c'est avec fierté que nous portons le nom de notre vile à travers le Portugal, montrant
+                que «le travail est l'honneur» comme le dit notre fondateur, M. João Cerqueira Pereira.
+                Nous avons actuellement la collaboration de 22 employés. Nous sommes spécialistes dans l'exécution et la
+                maintenance d'électricité, domotique, télécommunications, système incendie, alarme/intrusion, caméras de
+                vidéosurveillance et nous vendons tous types de matériel et appareils électriques. Nous réalisons tous
+                types d'installations électriques, délestages et dérivations, postes de transformation et lotissements,
+                réseaux de télécommunication et fibre optique. Nous sommes une entreprise reconnue et qualifiée par
+                E-REDES, ANACOM, ANPC et PSP.
+            </div>
+        </div>
+    </div>
+</section>
+<!--parteners section-->
+<section class="partners text-center">
+    <h2 class="text-center my-5 font-weight-bold">Nous partenaires</h2>
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-6"><img src="{% static 'images/partners/EDP.jpg' %}" alt="logo EDP"></div>
+            <div class="col-md-6"><img src="{% static 'images/partners/E-REDES.png' %}" alt="logo E-redes"></div>
+        </div>
+        <div class="row mx-auto py-5">
+            <div class="col-md-4"><img src="{% static 'images/partners/nos.png' %}" alt="logo NOS"></div>
+            <div class="col-md-4"><img src="{% static 'images/partners/anpc.png' %}" alt="logo ANPC"></div>
+            <div class="col-md-4"><img src="{% static 'images/partners/goldenergy.png' %}" alt="logo Gold energy"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}

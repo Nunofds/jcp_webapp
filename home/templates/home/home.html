@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block styleshets %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="title mx-auto text-center">
+        <div class="anim">
+            <div>
+                <span class="J">J</span>
+                <span class="O">o</span>
+                <span class="A">ã</span>
+                <span class="O">o</span>
+            </div>
+            <div class="my-5">
+                <span class="C">C</span>
+                <span class="E">e</span>
+                <span class="R">r</span>
+                <span class="Q">q</span>
+                <span class="U">u</span>
+                <span class="E">e</span>
+                <span class="I">i</span>
+                <span class="R">r</span>
+                <span class="A">a</span>
+            </div>
+            <div>
+                <span class="P">P</span>
+                <span class="E">e</span>
+                <span class="R">r</span>
+                <span class="E">e</span>
+                <span class="I">i</span>
+                <span class="R">r</span>
+                <span class="A">a</span>
+            </div>
+
+            <h1 class="mt-5">Entreprise créée en 1977 dédiée aux installations électriques, télécommunications, systèmes de détection incendie, vidéosurveillance, intrusion et alarmes.</h1>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
