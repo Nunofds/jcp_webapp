@@ -1,8 +1,6 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 
-# Create your views here.
 def boutique(request):
-    return HttpResponse('page boutique')
+    return render(request, 'produit/boutique.html')
 
