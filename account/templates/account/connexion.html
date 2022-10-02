@@ -1,8 +1,8 @@
 {% extends 'main.html' %}
+{% load widget_tweaks %}
 {% load static %}
 
 {% block content %}
-{% include 'account/messaging.html' %}
 <h1 class="text-center my-5">Connexion</h1>
 <section class="inscription text-center py-5">
     <div class="container">
@@ -10,8 +10,26 @@
             <div class="col-md-6 col-sm-12">
                 <p>Image</p>
             </div>
-            <div class="col-md-6 col-sm-12">
-                <p>Formulaire contact</p>
+             <div class="col-md-6 col-sm-12">
+                 <!--errors-->
+                 {% include 'errors/messaging.html' %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group mt-3">
+                        {% render_field form.username class="form-control" placeholder="Nom utilisateur" type="text" %}
+                    </div>
+                    <div class="form-group mt-3">
+                        {% render_field form.password class="form-control" placeholder="Mot de passe" type="password" %}
+                    </div>
+                    <!--button-->
+                    <button type="submit" value="Submit" class="btn btn-warning mt-3">Me connecter</button>
+                </form>
+                <div>
+                    <small>Vous n'avez pas de compte ? <a href="{% url 'account:inscription' %}"> M'inscrire</a></small><br>
+                     <small class="text-muted">
+                        <a href="#">Mot de passe oublié ?</a>
+                    </small>
+                </div>
             </div>
         </div>
     </div>

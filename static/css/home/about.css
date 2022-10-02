@@ -1,5 +1,6 @@
 :root{
-    --yellow_bgAbout: rgba(222, 179, 25, .1);
+    /* --yellow_bgAbout: rgba(222, 179, 25, .3); */
+    --yellow_bgAbout: rgba(180, 200, 50, .1);
 }
 /* about section */
 .about, .partners {
