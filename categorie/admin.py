@@ -7,5 +7,5 @@ class CategorieAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
-admin.site.register(Categorie, CategorieAdmin)
+admin.site.register(Categorie)
 

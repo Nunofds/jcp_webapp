@@ -7,5 +7,5 @@ class InventaireAdmin(admin.ModelAdmin):
     search_fields = ['product']
 
 
-admin.site.register(Inventaire, InventaireAdmin)
+admin.site.register(Inventaire)
 

@@ -1,0 +1,7 @@
+
+.inscription .errorlist li{
+    list-style: none;
+    color: tomato;
+    font-size: small;
+    text-align: start;
+}

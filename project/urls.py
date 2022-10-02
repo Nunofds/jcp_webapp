@@ -23,6 +23,8 @@ urlpatterns = [
     path('accueil/agenda/', include('reservation.urls')),
     path('accueil/boutique/', include('produit.urls')),
     path('accueil/contact/', include('contact.urls')),
-    path('accueil/inscription/', include('account.urls')),
+    path('accueil/', include('account.urls')),
     path('accueil/connexion/', include('account.urls')),
+    path('accueil/monCompte', include('user.urls')),
+
 ]

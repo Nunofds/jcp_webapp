@@ -1,0 +1,7 @@
+# In this file you found the requirements to run this app
+
+Django~=4.1.1
+mysql
+mysqlclient
+Pillow
+django-widget-tweaks
