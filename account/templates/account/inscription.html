@@ -14,7 +14,7 @@
             <div class="col-md-6 col-sm-12">
                 <p>Image</p>
             </div>
-            <div class="col-md-6 col-sm-12">
+            <div class="text-start col-md-6 col-sm-12">
                 <form action="" method="POST">
                     {% csrf_token %}
                     <div class="form-group mt-3">
@@ -43,14 +43,15 @@
                             </svg>
                             En vous inscrivant, vous acceptez les Conditions d'utilisation et la
                             Politique de confidentialité.
-                        </small><br>
-                        <small><i><a href="{% url 'account:rgpd' %}" target="_blank">Consulter RGPD</a></i></small>
+                        </small>
                     </div>
                     <!--button-->
                     <button type="submit" value="Submit" class="btn btn-warning">M'inscrire</button>
                 </form>
                 <div>
                     <small>Vous avez déjà un compte ? <a href="{% url 'account:connexion' %}"> Me connecter</a></small>
+                    <br>
+                    <small><i><a href="{% url 'account:rgpd' %}" target="_blank">Consulter RGPD</a></i></small>
                 </div>
             </div>
         </div>
