@@ -1,0 +1,13 @@
+body{
+    background: #dddddd50;
+}
+
+.box {
+    background: #dddddd50;
+    border-radius: 15px;
+    box-shadow: -15px -15px 15px rgba(255, 255, 255, .2),
+        15px 15px 15px rgba(0, 0, 0, .1),
+        inset -5px -5px 5px rgba(255, 255, 255, .2),
+        inset 5px 5px 5px rgba(0, 0, 0, .1);
+}
+
