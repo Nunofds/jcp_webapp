@@ -25,6 +25,6 @@ urlpatterns = [
     path('accueil/contact/', include('contact.urls')),
     path('accueil/', include('account.urls')),
     path('accueil/connexion/', include('account.urls')),
-    path('accueil/monCompte', include('user.urls')),
+    path('accueil/monCompte/', include('user.urls')),
 
 ]

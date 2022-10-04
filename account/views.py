@@ -4,13 +4,14 @@ from django.shortcuts import render, redirect
 from .decorators import user_not_authenticated
 from django.contrib import messages
 from .forms import InscriptionForm, UserLoginForm
+from .my_captcha import FormWithCaptcha
 
 
 @user_not_authenticated()
 def inscription(request):
     if request.method == 'POST':
         form = InscriptionForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and request.POST.get("g-recaptcha-response"):
             user = form.save()
             login(request, user)
             messages.success(request, f"Nouvelle compte crée: {user.username}")
@@ -21,7 +22,7 @@ def inscription(request):
     else:
         form = InscriptionForm()
 
-    context = {'form': form}
+    context = {'form': form, 'captcha': FormWithCaptcha}
     return render(request, 'account/inscription.html', context)
 
 
@@ -58,4 +59,3 @@ def logout_user(request):
 def rgpd(request):
     context = {}
     return render(request, 'account/rgpd.html', context)
-
