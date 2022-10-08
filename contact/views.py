@@ -1,6 +1,11 @@
 from django.shortcuts import render
+from .forms import ContactForm
 
 
 def contact(request):
-    return render(request, 'contact/contact.html')
+
+    form = ContactForm
+
+    content = {'form':form}
+    return render(request, 'contact/contact.html', content)
 
