@@ -11,7 +11,7 @@
     <h1 class="text-center my-5">Nous Contacter</h1>
 </div>
 
-<section class="contact text-center py-5">
+<section class="contact text-center pb-5">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-12">
@@ -21,10 +21,15 @@
                 <!--Success message-->
                 {% for message in messages %}
                 {% if message.tags == 'success' %}
-                <div class="alert alert-success alert-dismissible" role="alert">
-                    <a href="{% url 'contact:contact' %}" class="close" data-dismiss="alert"
+                <div class="alert alert-success alert-dismissible d-flex justify-content-center" role="alert">
+                    <div>
+                        <img src="{% static 'images/logo.png' %}" alt="logo entreprise" style="width:60px;border-radius: 50%;">
+                    </div>
+                    <div>
+                         <a href="{% url 'contact:contact' %}" class="close" data-dismiss="alert"
                        aria-label="close">&times;</a>
                     {{ message|safe|escape }}
+                    </div>
                 </div>
                 {% endif %}
                 {% endfor %}
@@ -55,7 +60,7 @@
                     <div class="form-group mt-3">
                         {{ captcha }}
                         <p class="captcha_message">
-                            <span>Le captcha est obligatoire</span>
+                            <span><i>Le captcha est obligatoire</i></span>
                         </p>
                     </div>
                     <!-- button submit -->
