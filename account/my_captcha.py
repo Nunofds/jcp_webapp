@@ -3,4 +3,4 @@ from captcha.fields import ReCaptchaField
 
 
 class FormWithCaptcha(forms.Form):
-    captcha = ReCaptchaField(label='')
+    captcha = ReCaptchaField(label='', required=True)

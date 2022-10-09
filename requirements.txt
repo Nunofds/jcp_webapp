@@ -5,3 +5,4 @@ mysql
 mysqlclient
 Pillow
 django-widget-tweaks
+recaptcha
