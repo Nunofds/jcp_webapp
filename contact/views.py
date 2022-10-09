@@ -15,16 +15,19 @@ def contact(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             recipients = ['fernandes.n.sa@outlook.fr', 'n.b.fernandes@outlook.fr']
+            # form.save()
 
             send_mail(subject, message, email, recipients)
-            messages.success(request, f"Merci <b>{name}</b> ! Votre message a bien été envoyé.")
+            messages.success(request, f"""Merci <b>{name}</b> !<br>
+                                        Votre message a bien été envoyé.<br>
+                                        Nous entrons en contact avec vous prochainement.""")
             return redirect('contact:contact')
         else:
             for error in list(form.errors.values()):
                 messages.error(request, error)
 
         if not request.POST.get('g-recaptcha-response'):
-            messages.error(request, "Ce champs est oblifatoire!")
+            messages.error(request, "Ce champs est obligatoire!")
     else:
         form = ContactForm
 

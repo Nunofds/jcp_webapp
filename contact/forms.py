@@ -1,7 +1,11 @@
 from django import forms
+from .models import Contact
 
 
 class ContactForm(forms.Form):
+    class Meta:
+        model: Contact
+
     name = forms.CharField(required=True, widget=forms.TextInput(
         attrs={
             'autofocus': True,
