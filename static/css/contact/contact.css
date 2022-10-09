@@ -1,0 +1,13 @@
+.contact form ul li {
+    list-style: none;
+    text-align: start;
+    color: tomato;
+    font-size: 12px;
+}
+
+.captcha_message {
+    text-align: start;
+    color: tomato;
+    font-size: 12px;
+}
+

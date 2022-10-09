@@ -1,4 +1,5 @@
 from django import forms
+from django.core.validators import RegexValidator
 from .models import Contact
 
 
@@ -10,7 +11,9 @@ class ContactForm(forms.Form):
         attrs={
             'autofocus': True,
             'class': 'form-control',
-            'placeholder': 'Votre nom complet'})
+            'placeholder': 'Votre nom complet',
+            'type': 'text'}),
+        validators=[RegexValidator(regex="^[a-zA-Z ]*$", message='Veuillez entrer un nom valide! Pas de chiffres ni caractères speciaux.')],
     )
     email = forms.EmailField(required=True, widget=forms.EmailInput(
         attrs={
