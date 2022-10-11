@@ -7,6 +7,15 @@ from django.core.validators import RegexValidator
 
 class InscriptionForm(UserCreationForm, ReCaptchaField):
     email = forms.CharField(required=True, widget=forms.EmailInput(attrs={'class': 'validate', }))
+    first_name = forms.CharField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={'class': 'validate'}),
+        validators=[RegexValidator(
+            regex="^[a-zA-Z ]*$",
+            message='Veuillez entrer un nom valide! Pas de chiffres ni caractères speciaux.',
+        )],
+    )
 
     class Meta:
         model = User
@@ -22,7 +31,7 @@ class UserLoginForm(AuthenticationForm):
             'autofocus': True,
             'class': 'form-control',
             'placeholder': 'Nom d\'utilisateur ou email'}),
-    )
+                               )
 
     password = forms.CharField(required=True, widget=forms.PasswordInput(
         attrs={
