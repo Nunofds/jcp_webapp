@@ -1,13 +1,26 @@
+/* GENEREAL ACCOUNT */
+.captcha_message {
+    text-align: start;
+    color: orange;
+    font-size: 12px;
+}
 
+/* INSCRIPTION */
 .inscription .errorlist li{
     list-style: none;
     color: tomato;
     font-size: small;
     text-align: start;
 }
+.inscription .inscription_img{
+    background: url("../../images/account/subscribe-640.png") no-repeat center;
+    background-size: auto 90%;
+    overflow: hidden;
+}
 
-.captcha_message {
-    text-align: start;
-    color: orange;
-    font-size: 12px;
+/* CONNEXION */
+.connexion_img {
+    background: url("../../images/account/login_640.png") no-repeat center;
+    background-size: auto 90%;
+    overflow: hidden;
 }
