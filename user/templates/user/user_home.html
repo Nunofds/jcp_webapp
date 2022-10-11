@@ -43,7 +43,7 @@
                                 <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
                             </svg>
                             <b>Nom d'utilisateur</b></p>
-                        <p class="ms-5">username</p>
+                        <p class="ms-5">{{ request.user.username }}</p>
                     </div>
                     <div>
                         <p class="mb-0">
@@ -55,7 +55,7 @@
                             </svg>
                             <b>Nom complet</b>
                         </p>
-                        <p class="ms-5">first_name</p>
+                        <p class="ms-5">{{ request.user.first_name }}</p>
                     </div>
                     <div>
                         <p class="mb-0">
@@ -68,7 +68,7 @@
                             </svg>
                             <b>Email</b>
                         </p>
-                        <p class="ms-5">exemple@exemple.com</p>
+                        <p class="ms-5">{{ request.user.email }}</p>
                     </div>
                     <div>
                         <p class="mb-0">

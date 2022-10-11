@@ -6,6 +6,10 @@
     display: flex;
     justify-content: center;
 }
+.contact .before_contact_form .row {
+    border-left: 1px solid var(--yellow_contact);
+    border-bottom: 1px solid var(--yellow_contact);
+}
 .contact .before_contact_form p {
     font-weight: bold;
     color: #00000090;

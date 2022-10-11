@@ -3,11 +3,11 @@
 }
 
 .title {
-    padding-top: 56px;
+    padding-top: 131px;
     font-family: 'lato', sans-serif;
     background: #000;
     font-size: 42px;
-    height: 90vh;
+    height: 95vh;
     color: var(--white);
     display: flex;
     justify-content: center;
