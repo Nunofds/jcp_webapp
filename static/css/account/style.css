@@ -6,3 +6,8 @@
     text-align: start;
 }
 
+.captcha_message {
+    text-align: start;
+    color: orange;
+    font-size: 12px;
+}

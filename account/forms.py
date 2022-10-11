@@ -2,6 +2,7 @@ from captcha.fields import ReCaptchaField
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
+from django.core.validators import RegexValidator
 
 
 class InscriptionForm(UserCreationForm, ReCaptchaField):
@@ -16,14 +17,14 @@ class UserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(UserLoginForm, self).__init__(*args, **kwargs)
 
-    username = forms.CharField(widget=forms.TextInput(
+    username = forms.CharField(required=True, widget=forms.TextInput(
         attrs={
             'autofocus': True,
             'class': 'form-control',
-            'placeholder': 'Nom d\'utilisateur ou email'}
-    ))
+            'placeholder': 'Nom d\'utilisateur ou email'}),
+    )
 
-    password = forms.CharField(widget=forms.PasswordInput(
+    password = forms.CharField(required=True, widget=forms.PasswordInput(
         attrs={
             'autofocus': True,
             'class': 'form-control',

@@ -1,3 +1,22 @@
+:root {
+    --yellow_contact: rgba(222, 179, 25, 0.5);
+}
+
+.contact .before_contact_form {
+    display: flex;
+    justify-content: center;
+}
+.contact .before_contact_form p {
+    font-weight: bold;
+    color: #00000090;
+}
+
+/* ------------------------------- */
+.img_contact_content {
+    background: url("../../images/contact/contact_image.jpg") no-repeat center;
+    background-size: auto 90%;
+}
+
 .contact form .errorlist {
     margin-bottom: 5px;
     padding-left: 5px;
@@ -9,9 +28,19 @@
     font-size: 12px;
 }
 
-.captcha_message {
+.contact .captcha_message {
     text-align: start;
     color: orange;
     font-size: 12px;
 }
 
+@media screen and (max-width:425px) {
+    .contact .img_contact_content {
+        display: none;
+    }
+    .contact .form-content{
+        padding: 3px!important;
+        margin:0!important;
+        overflow: hidden;
+    }
+}

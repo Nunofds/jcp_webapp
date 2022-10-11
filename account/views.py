@@ -30,7 +30,7 @@ def inscription(request):
 def connexion(request):
     if request.method == "POST":
         form = UserLoginForm(request=request, data=request.POST)
-        if form.is_valid():
+        if form.is_valid() and request.POST.get("g-recaptcha-response"):
             user = authenticate(
                 username=form.cleaned_data["username"],
                 password=form.cleaned_data["password"],
@@ -44,8 +44,9 @@ def connexion(request):
                 messages.error(request, error)
 
     form = UserLoginForm()
+    captcha = FormWithCaptcha
 
-    context = {"form": form}
+    context = {"form": form, 'captcha': captcha}
     return render(request, "account/connexion.html", context)
 
 

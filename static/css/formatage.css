@@ -4,3 +4,8 @@
     box-sizing: border-box;
     font-family: 'lato', sans-serif;
 }
+
+h1 {
+    color: #DEB319;
+    font-weight: bold;
+}

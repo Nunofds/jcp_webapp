@@ -6,3 +6,5 @@ mysqlclient
 Pillow
 django-widget-tweaks
 recaptcha
+
+code for test send mail: python -m smtpd -n -c DebuggingServer localhost:1025

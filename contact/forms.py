@@ -33,7 +33,12 @@ class ContactForm(forms.Form):
         attrs={
             'autofocus': True,
             'class': 'form-control',
-            'placeholder': 'Votre telephone'}))
+            'placeholder': 'Votre telephone'}),
+        validators=[RegexValidator(
+            regex="^(\+\d{1,3})?,?\s?\d{8,13}",
+            message='Veuillez entrer un numéro de téléphone valide au format +999999999999.',
+        )],
+    )
 
     subject = forms.CharField(required=True, widget=forms.TextInput(
         attrs={
