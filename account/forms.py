@@ -1,16 +1,12 @@
-from captcha.fields import ReCaptchaField
-from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django import forms
+from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
+from captcha.fields import ReCaptchaField
+from django import forms
 
 
+# REGISTER
 class InscriptionForm(UserCreationForm, ReCaptchaField):
-    email = forms.CharField(
-        required=True,
-        widget=forms.EmailInput(
-            attrs={'class': 'validate', })
-    )
     first_name = forms.CharField(
         required=True,
         widget=forms.TextInput(
@@ -22,18 +18,27 @@ class InscriptionForm(UserCreationForm, ReCaptchaField):
     )
 
     class Meta:
-        model = get_user_model()
+        model = User
         fields = ['first_name', 'username', 'email', 'password1', 'password2']
 
+    # email unique, return error if the email exists in BDD
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        user_count = User.objects.filter(email=email).count()
+        if user_count > 0:
+            raise forms.ValidationError('Un compte avec ce email existe déjà.')
+        return email
+
     # fonction for save form with some personalisation for email
-    def save(self, commit=True):
-        user = super(InscriptionForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
-        if commit:
-            user.save()
-        return user
+    # def save(self, commit=True):
+    #     user = super(InscriptionForm, self).save(commit=False)
+    #     user.email = self.cleaned_data['email']
+    #     if commit:
+    #         user.save()
+    #     return user
 
 
+# LOGIN
 class UserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(UserLoginForm, self).__init__(*args, **kwargs)
@@ -43,11 +48,11 @@ class UserLoginForm(AuthenticationForm):
             'autofocus': True,
             'class': 'form-control',
             'placeholder': 'Nom d\'utilisateur ou email'}),
-                               )
+    )
 
     password = forms.CharField(required=True, widget=forms.PasswordInput(
         attrs={
             'autofocus': True,
             'class': 'form-control',
-            'placeholder': 'Mot de passe'}
-    ))
+            'placeholder': 'Mot de passe'}),
+    )

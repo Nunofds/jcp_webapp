@@ -14,6 +14,8 @@
             <div class="inscription_img mt-3 col-md-6 col-sm-12 animate__animated animate__slideInLeft">
             </div>
             <div class="text-start col-md-6 col-sm-12">
+                <!--errors-->
+                {% include 'errors/messaging.html' %}
                 <form action="" method="POST">
                     {% csrf_token %}
                     <div class="form-group mt-3">
@@ -37,8 +39,6 @@
                             <span><i>Le captcha est obligatoire</i></span>
                         </p>
                     </div>
-                    <!--errors-->
-                    {{ form.errors }}
                     <div class="text-start mt-3">
                         <small >
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checkbox" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -54,9 +54,9 @@
                     <button type="submit" value="Submit" class="btn btn-warning">M'inscrire</button>
                 </form>
                 <div>
-                    <small>Vous avez déjà un compte ? <a href="{% url 'account:connexion' %}"> Me connecter</a></small>
+                    <small>Vous avez déjà un compte ? <a href="{% url 'my_account:connexion' %}"> Me connecter</a></small>
                     <br>
-                    <small><i><a href="{% url 'account:rgpd' %}" target="_blank">Consulter RGPD</a></i></small>
+                    <small><i><a href="{% url 'my_account:rgpd' %}" target="_blank">Consulter RGPD</a></i></small>
                 </div>
             </div>
         </div>

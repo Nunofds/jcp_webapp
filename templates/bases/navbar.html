@@ -64,7 +64,7 @@
                         </li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
-                            <a class="dropdown-item" href="{% url 'account:logout' %}">
+                            <a class="dropdown-item" href="{% url 'my_account:logout' %}">
                             me déconnecter
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -76,7 +76,7 @@
                     </ul>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="{% url 'account:logout' %}" class="nav-link p-1" title="Me déconnecter du compte.">
+                    <a href="{% url 'my_account:logout' %}" class="nav-link p-1" title="Me déconnecter du compte.">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="32"
                              height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none"
                              stroke-linecap="round" stroke-linejoin="round">
@@ -90,7 +90,7 @@
                 <!--connexion/inscription/logout-->
                 <ul class="connection-icons d-flex">
                     <li class="px-2">
-                        <a href="{% url 'account:connexion' %}" class="p-1" title="Connexion au compte utilisateur.">
+                        <a href="{% url 'my_account:connexion' %}" class="p-1" title="Connexion au compte utilisateur.">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check"
                                  width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none"
                                  stroke-linecap="round" stroke-linejoin="round">
@@ -102,7 +102,7 @@
                         </a>
                     </li>
                     <li class="px-2">
-                        <a href="{% url 'account:inscription' %}" class="p-1" title="Créer un compte utilisateur.">
+                        <a href="{% url 'my_account:inscription' %}" class="p-1" title="Créer un compte utilisateur.">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus"
                                  width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none"
                                  stroke-linecap="round" stroke-linejoin="round">
