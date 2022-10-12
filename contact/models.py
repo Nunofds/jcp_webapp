@@ -1,11 +1,8 @@
-from django.core.validators import RegexValidator
-from django.utils.translation import gettext_lazy as _
 from django.db import models
 
 
 class Contact(models.Model):
-    name = models.CharField('Nom Contact', max_length=255, null=True,
-    )
+    name = models.CharField('Nom Contact', max_length=255, null=True)
     email = models.EmailField('Email Contact', null=True)
     phone = models.CharField('Telephone Contact', max_length=20, null=True)
     subject = models.CharField('Sujet Message', max_length=100, null=True)

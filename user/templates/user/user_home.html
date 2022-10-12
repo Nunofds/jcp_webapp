@@ -20,7 +20,7 @@
                         <div class="col-md-4">
                             <p>
                             <h3>
-                                <a href="{% url 'user:update_profil' %}" class="btn btn-outline-secondary" style="font-size:16px;">
+                                <a href="{% url 'user:update_profil' request.user.id %}" class="btn btn-outline-secondary" style="font-size:16px;">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                          class="icon icon-tabler icon-tabler-settings"
                                          width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00"

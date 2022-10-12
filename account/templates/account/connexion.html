@@ -15,12 +15,8 @@
             </div>
             <div class="text-start col-md-6 col-sm-12">
                  <!--errors-->
-<!--                 {% include 'errors/messaging.html' %}-->
-                {% for message in messages %}
-					<div class="alert mt-3">
-						<p>{{message}}</p>
-					</div>
-				{% endfor %}
+                 {% include 'errors/messaging.html' %}
+                <!--form-->
                 <form action="" method="POST">
                     {% csrf_token %}
                     <div class="form-group mt-3">
