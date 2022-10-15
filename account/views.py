@@ -49,7 +49,7 @@ def connexion(request):
     return render(request, "account/connexion.html", context)
 
 
-# @login_required()
+@login_required()
 def logout_user(request):
     logout(request)
     messages.info(request, "Vous êtes bien déconnecté!")

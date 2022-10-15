@@ -12,12 +12,6 @@ def user_home(request):
 
 
 @login_required()
-def user_reservation(request):
-    context = {}
-    return render(request, 'user/reservations.html', context)
-
-
-@login_required()
 def user_update_profil(request, pk):
     user = User.objects.get(id=pk)
     form = Update_profile(instance=user)
