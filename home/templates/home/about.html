@@ -8,7 +8,13 @@
 {% block content %}
 <!--about section-->
 <section class="about my-5">
-    <h1 class="text-center py-5 animate__animated  animate__slideInRight">Qui sommes nous ?</h1>
+    <div class="pt-5">
+        <div class="py-5 text-center ">
+             {% include 'bases/alert_info.html' %}
+            <h1 class="py-5 animate__animated  animate__slideInRight">Qui sommes nous ?</h1>
+        </div>
+    </div>
+
     <div class="container bgAbout py-2">
         <div class="row my-5">
             <div class="desc col-md-6 col-sm-12 animate__animated  animate__slideInLeft">

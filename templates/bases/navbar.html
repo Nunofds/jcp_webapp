@@ -23,11 +23,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'contact:contact' %}">Contact</a>
                 </li>
-                {% if not request.user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'reservation:user_reservation' %}">Agenda</a>
-                </li>
-                {% endif %}
                 {% if request.user.is_authenticated %}
                 <li class="nav-item dropdown me-5 mx-3">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

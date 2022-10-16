@@ -36,8 +36,8 @@
                 aria-label="close">&times;</a>
                 {{ message|safe|escape }}
             </div>
-            </div>
             {% elif message.tags == 'error' %}
+            </div>
                 <div class="alert alert-success alert-dismissible d-flex justify-content-center" role="alert">
             <div>
                 <img src="{% static 'images/logo.png' %}" alt="logo entreprise"
