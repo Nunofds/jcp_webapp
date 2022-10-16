@@ -1,5 +1,5 @@
 :root{
-    --yellow-25: #DEB31925;
+    --yellow-30: #DEB31930;
     --yellow-:#DEB319;
     --black: #000000;
 }
@@ -7,8 +7,9 @@
 /*  */
 nav {
     /* background: var(--black); */
-   /* background: #F4F4F4; */
-    background: #ECECEC;
+    /* background: #F4F4F4; */
+    /* background: #ECECEC; */
+    background: #fff;
 }
 nav .navbar-brand img{
     width: 46px;
@@ -22,14 +23,14 @@ nav .connection-icons li a svg:hover{
     transition: easy-in .3s;
 }
 .navbar .navbar-nav .nav-item .nav-link{
-    color: var(--yellow-);
+    color: #ffbf00;
     height: 60px;
     line-height: 40px;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 .navbar .navbar-nav .nav-item .nav-link:hover{
-    background: var(--yellow-25)
+    background: var(--yellow-30)
 }
 
 /* MEDIA QUERY */
