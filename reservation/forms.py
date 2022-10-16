@@ -17,4 +17,5 @@ class ReservationForm(forms.ModelForm):
             'date',
             'hour',
             'message',
+            'user',
         ]

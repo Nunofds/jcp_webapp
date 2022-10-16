@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block styleshets %}
-
+<link rel="stylesheet" href="{% static 'css/reservation/reservation.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -72,6 +72,11 @@
                     <div class="form-group mt-3">
                         {{ form.message.errors }}
                         {% render_field form.message class="form-control" placeholder="Votre message*" type="text" %}
+                    </div>
+                    <!--MESSAGE-->
+                    <div class="form-group mt-3 no-display">
+                        {{ form.user.errors }}
+                        {% render_field form.user class="form-control" placeholder="user" type="hidden" %}
                     </div>
 
                     <!--BUTTON SUBMIT-->

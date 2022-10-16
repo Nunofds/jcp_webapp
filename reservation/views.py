@@ -21,8 +21,9 @@ def user_reservation(request, pk=None):
 
 
 @login_required()
-def user_new_reservation(request, pk=None):
+def user_new_reservation(request, pk):
     user = User.objects.get(id=pk)
+    form = ReservationForm(initial={'user': user})
 
     if request.method == 'POST':
         form = ReservationForm(request.POST)
@@ -30,8 +31,6 @@ def user_new_reservation(request, pk=None):
             form.save()
             messages.success(request, 'Votre réservation a bien été envoyé!')
             return redirect('reservation:user_reservation', pk=request.user.id)
-    else:
-        form = ReservationForm()
 
     context = {'form': form}
     return render(request, 'reservation/new_reservation.html', context)
@@ -59,7 +58,7 @@ def user_delete_reservation(request, pk=None):
     if request.method == 'POST':
         reservation.delete()
         messages.success(request, 'Votre réservation a bien été supprimé !')
-        return redirect('reservation:user_reservation')
+        return redirect('reservation:user_reservation', pk=request.user.id)
 
     context = {'reservation': reservation}
     return render(request, 'reservation/delete_reservation.html', context)
