@@ -100,7 +100,7 @@
                 </div>
                 <div>
                     <p>
-                        <a href="" class="btn btn-outline-danger">
+                        <a href="{% url 'user:delete_profil' request.user.id %}" class="btn btn-outline-danger">
                             <small>Supprimer mon compte</small>
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
                                  width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00"

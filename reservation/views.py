@@ -64,6 +64,7 @@ def user_delete_reservation(request, pk=None):
     reservation = Reservation.objects.get(id=pk)
     if request.method == 'POST':
         reservation.delete()
+        messages.success(request, 'Votre réservation a bien été supprimé !')
         return redirect('reservation:user_reservation')
 
     context = {'reservation': reservation}
