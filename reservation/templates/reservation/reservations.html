@@ -18,7 +18,11 @@
     </svg>
 </h1>
 
+
 <div class="container-fluid py-5">
+    <div>
+        <p>Nombre total de réservations: <span><i><b>{{ total_reservations }}</b></i></span></p>
+    </div>
     <!--MESSAGES SUCCESS/ERROR-->
     {% for message in messages %}
         {% if message.tags == 'success' %}
@@ -28,7 +32,7 @@
                 style="width:60px;border-radius: 50%;">
             </div>
             <div>
-                <a href="{% url 'reservation:user_reservation' %}" class="close" data-dismiss="alert"
+                <a href="{% url 'reservation:user_reservation' request.user.id %}" class="close" data-dismiss="alert"
                 aria-label="close">&times;</a>
                 {{ message|safe|escape }}
             </div>
@@ -59,7 +63,7 @@
             <th scope="col">Heure</th>
             <th scope="col">Message</th>
             <th scope="col">Validé ?</th>
-<!--            <th scope="col">user_id</th>-->
+            <th scope="col">user_id</th>
             <th scope="col">Actions</th>
         </tr>
         </thead>
@@ -82,7 +86,7 @@
                             Non
                         {% endif %}
                     </td>
-<!--                    <td scope="row">{{ reservation.user_id }}</td>-->
+                    <td scope="row">{{ reservation.user_id }}</td>
                     <td scope="row">
                         <a href="{% url 'reservation:user_update_reservation' reservation.id %}" class="btn btn-outline-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -116,7 +120,7 @@
     
 <!--NEW RESERVATION BUTTON-->
     <div>
-        <a href="{% url 'reservation:user_new_reservation' %}" class="btn btn-outline-info">
+        <a href="{% url 'reservation:user_new_reservation' request.user.id %}" class="btn btn-outline-info">
             Nouvelle réservation
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

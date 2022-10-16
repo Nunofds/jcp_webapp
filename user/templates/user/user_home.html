@@ -119,7 +119,7 @@
             <div class="col-md-6 d-flex justify-content-center align-items-center">
                 <div class="text-center">
                     <h4>
-                        <a href="{% url 'reservation:user_reservation' %}">Accéder a mes réservations</a>
+                        <a href="{% url 'reservation:user_reservation' request.user.id %}">Accéder a mes réservations</a>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event"
                              width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none"
                              stroke-linecap="round" stroke-linejoin="round">

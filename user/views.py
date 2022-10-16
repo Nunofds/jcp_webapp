@@ -6,7 +6,8 @@ from user.forms import Update_profile
 
 
 @login_required()
-def user_home(request):
+def user_home(request, pk=None):
+
     context = {}
     return render(request, 'user/user_home.html', context)
 
