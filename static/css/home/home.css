@@ -2,6 +2,12 @@
 	--white:#f1f1f1;
 }
 
+/* NAVBAR BG */
+nav {
+    background: #000 !important;
+}
+
+/*  */
 .title {
     padding-top: 131px;
     font-family: 'lato', sans-serif;

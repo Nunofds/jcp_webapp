@@ -6,7 +6,9 @@
 
 /*  */
 nav {
-    background: var(--black);
+    /* background: var(--black); */
+   /* background: #F4F4F4; */
+    background: #ECECEC;
 }
 nav .navbar-brand img{
     width: 46px;
@@ -23,6 +25,8 @@ nav .connection-icons li a svg:hover{
     color: var(--yellow-);
     height: 60px;
     line-height: 40px;
+    font-weight: bold;
+    font-size: 1rem;
 }
 .navbar .navbar-nav .nav-item .nav-link:hover{
     background: var(--yellow-25)
