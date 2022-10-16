@@ -20,34 +20,6 @@
                         retour réservations
                     </a>
                 </div>
-                {% for message in messages %}
-                    {% if message.tags == 'success' %}
-                    <div class="alert alert-success alert-dismissible d-flex justify-content-center" role="alert">
-                        <div>
-                            <img src="{% static 'images/logo.png' %}" alt="logo entreprise"
-                            style="width:60px;border-radius: 50%;">
-                        </div>
-                        <div>
-                            <a href="{% url 'reservation:user_new_reservation' %}" class="close" data-dismiss="alert"
-                            aria-label="close">&times;</a>
-                            {{ message|safe|escape }}
-                        </div>
-                    </div>
-                    {% elif message.tags == 'error' %}
-                    <div class="alert alert-success alert-dismissible d-flex justify-content-center" role="alert">
-                        <div>
-                            <img src="{% static 'images/logo.png' %}" alt="logo entreprise"
-                            style="width:60px;border-radius: 50%;">
-                        </div>
-                        <div>
-                            <a href="{% url 'reservation:user_new_reservation' %}" class="close" data-dismiss="alert"
-                            aria-label="close">&times;</a>
-                            {{ message|safe|escape }}
-                        </div>
-                    </div>
-                    {% endif %}
-                {% endfor %}
-
                 <form method="POST">
                     {% csrf_token %}
                     <!--FULL NAME-->
