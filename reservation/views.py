@@ -22,6 +22,7 @@ def user_reservation(request, pk=None):
 
 @login_required()
 def user_new_reservation(request, pk=None):
+
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
@@ -29,7 +30,7 @@ def user_new_reservation(request, pk=None):
             messages.success(request, 'Votre réservation a bien été envoyé!')
             return redirect('reservation:user_reservation', pk=request.user.id)
     else:
-        form = ReservationForm
+        form = ReservationForm()
 
     context = {'form': form}
     return render(request, 'reservation/new_reservation.html', context)
