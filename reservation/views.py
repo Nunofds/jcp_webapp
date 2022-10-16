@@ -22,6 +22,7 @@ def user_reservation(request, pk=None):
 
 @login_required()
 def user_new_reservation(request, pk=None):
+    user = User.objects.get(id=pk)
 
     if request.method == 'POST':
         form = ReservationForm(request.POST)

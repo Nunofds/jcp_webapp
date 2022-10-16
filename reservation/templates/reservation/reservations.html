@@ -23,6 +23,7 @@
     <div>
         <p>Nombre total de réservations: <span><i><b>{{ total_reservations }}</b></i></span></p>
     </div>
+    <div>
     <!--MESSAGES SUCCESS/ERROR-->
     {% for message in messages %}
         {% if message.tags == 'success' %}
@@ -51,6 +52,7 @@
         </div>
         {% endif %}
     {% endfor %}
+    </div>
     <!--TABLE-->
     <table class="table table-striped table-warning">
         <thead>

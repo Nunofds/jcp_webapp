@@ -33,6 +33,13 @@ nav .connection-icons li a svg:hover{
     background: var(--yellow-30)
 }
 
+/* BURGUER BUTTON */
+.navbar-light .navbar-toggler{
+    color: rgb(255, 255, 255) !important;
+    border-color: rgb(255, 255, 255) !important;
+    background: rgba(249, 196, 3, .3) !important;
+}
+q
 /* MEDIA QUERY */
 @media screen and (max-width: 680px){
     .collapse .navbar-nav .nav-item {

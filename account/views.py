@@ -37,7 +37,7 @@ def connexion(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, "Bienvenue " + "<br>user.username</br>" + "! Vous avez été connecté!")
-                return redirect("user:user_home")
+                return redirect("user:user_home", request.user.id)
         else:
             for error in list(form.errors.values()):
                 messages.error(request, error)
