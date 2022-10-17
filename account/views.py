@@ -7,7 +7,7 @@ from .forms import InscriptionForm, UserLoginForm
 from .my_captcha import FormWithCaptcha
 
 
-@user_not_authenticated()
+@user_not_authenticated
 def inscription(request):
     if request.method == 'POST':
         form = InscriptionForm(request.POST)
@@ -25,7 +25,7 @@ def inscription(request):
     return render(request, 'account/inscription.html', context)
 
 
-@user_not_authenticated()
+@user_not_authenticated
 def connexion(request):
     if request.method == "POST":
         form = UserLoginForm(request=request, data=request.POST)
@@ -49,7 +49,7 @@ def connexion(request):
     return render(request, "account/connexion.html", context)
 
 
-@login_required()
+@login_required
 def logout_user(request):
     logout(request)
     messages.info(request, "Vous êtes bien déconnecté!")
