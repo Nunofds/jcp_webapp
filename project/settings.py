@@ -132,6 +132,9 @@ STATICFILES_DIRS = [
     BASE_DIR / STATIC_URL
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # modified the default backends by my personal backends for login with username or email
 AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend']
 
