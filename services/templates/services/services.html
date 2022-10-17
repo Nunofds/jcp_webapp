@@ -13,16 +13,18 @@
     <div class="container">
         <div class="row text-center">
             {% for service in services %}
-            <div class="col-lg-4 col-md-6 col-sm-12 animate__animated  animate__slideInRight">
+            <div class="col-lg-4 col-md-6 col-sm-12 my-3 animate__animated  animate__slideInRight">
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{ service.image.url }}" class="img-fluid rounded-start" alt="{{ service.name }}">
+                            {% if service.image %}
+                            <img src="{{ service.image.url|default_if_none:'#' }}" class="img-fluid rounded-start" alt="{{ service.name }}">
+                            {% endif %}
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{service.name}}</h5>
-                                <p class="card-text">{{service.desc}}</p>
+<!--                                <p class="card-text">{{service.desc}}</p>-->
                             </div>
                         </div>
                     </div>
