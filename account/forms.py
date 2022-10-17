@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from captcha.fields import ReCaptchaField
 from django import forms
+from account.decorators import user_not_authenticated
 
 
 # REGISTER

@@ -7,21 +7,50 @@
 {% endblock %}
 
 {% block content %}
-<section class="contact text-center pt-5 mt-5">
+<section class="container text-center pt-5 mt-5">
     <h1 class="mt-5 animate__animated  animate__slideInRight">Mettre à jour mes infos</h1>
-
     <div class="mx-auto py-5 col-md-6 col-sm-8 animate__animated  animate__slideInLeft">
         <div class="pb-3 text-start">
             <a href="{% url 'user:user_home' request.user.id %}" class="btn btn-outline-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="32"
+                     height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none"
+                     stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" />
+                    <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1"/>
                 </svg>
                 retour profil
             </a>
         </div>
+        <!--MESSAGES SUCCESS/ERROR-->
+        {% for message in messages %}
+        {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible d-flex justify-content-center" role="alert">
+            <div>
+                <img src="{% static 'images/logo.png' %}" alt="logo entreprise"
+                     style="width:60px;border-radius: 50%;">
+            </div>
+            <div>
+                <a href="{% url 'user:update_profil' request.user.id %}" class="close" data-dismiss="alert"
+                   aria-label="close">&times;</a>
+                {{ message|safe|escape }}
+            </div>
+        </div>
+        {% elif message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible d-flex justify-content-center" role="alert">
+            <div>
+                <img src="{% static 'images/logo.png' %}" alt="logo entreprise"
+                     style="width:60px;border-radius: 50%;">
+            </div>
+            <div>
+                <a href="{% url 'user:update_profil' request.user.id %}" class="close" data-dismiss="alert"
+                   aria-label="close">&times;</a>
+                {{ message|safe|escape }}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <!--FORMULAIRE-->
         <form action="" method="POST">
-            {% include 'errors/messaging.html' %}
             {% csrf_token %}
             <div class="form-group mt-3">
                 {% render_field form.first_name class="form-control" placeholder="Nom complet*" type="text" %}

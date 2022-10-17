@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from account.forms import InscriptionForm
 from django import forms
@@ -41,3 +42,4 @@ class Update_profile(InscriptionForm):
         widget=forms.EmailInput(
             attrs={'class': 'validate', }),
     )
+
