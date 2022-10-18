@@ -14,15 +14,21 @@
 
 - [x] User
     - [x] Add user account
-        - [] Modify account
-        - [] Update account
-        - [x] Delete account
+    - [x] Modify account
+    - [x] Update account
+    - [x] Delete account
 
-- [x] User reservation
-    - [x] Read reservations
+- [x] Reservation
     - [x] Create reservation
+    - [x] Read reservations
     - [x] Modify reservation
     - [x] Delete resrvation
+ 
+- [x] Services
+  - [x] Create
+  - [x] Read
+  - [x] Update
+  - [x] Delete
 
 - [x] Contact
     -[x] Send email
@@ -33,5 +39,5 @@
 
 - [] Inventary
 
-- [] Services
+
 
