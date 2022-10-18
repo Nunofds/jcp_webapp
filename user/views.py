@@ -8,9 +8,15 @@ from django.contrib.auth import get_user_model
 
 
 @login_required(login_url='user:user_home')
-def user_home(request, username=None):
+def user_home(request, username):
+    user = get_user_model().objects.get(username=username)
+    reservations = user.reservation_set.all()
+    total_reservations = reservations.count()
 
-    context = {}
+    context = {
+        'total_reservations': total_reservations,
+        'reservations': reservations
+    }
     return render(request, 'user/user_home.html', context)
 
 

@@ -11,3 +11,7 @@ body{
         inset 5px 5px 5px rgba(0, 0, 0, .1);
 }
 
+.box-reservations{
+    max-height: 570px;
+    overflow-y: scroll;
+}
