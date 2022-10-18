@@ -11,12 +11,14 @@
     <div class="container">
         <div class="row">
             <div class="box col-md-6 my-5">
+                <!--PROFILE INFORMATIONS-->
                 <div class="p-3">
                     <div class="row py-2">
                         <div class="col-md-8">
                             <p>
                             <h2>Mes informations de Profil</h2></p>
                         </div>
+                        <!--UPDATE PROFILE BUTTON-->
                         <div class="col-md-4">
                             <p>
                             <h3>
@@ -130,9 +132,10 @@
                         <p class="ms-5">********</p>
                     </div>
                 </div>
+                <!--DELETE ACCOUNT-->
                 <div>
                     <p>
-                        <a href="{% url 'user:delete_profil' request.user.id %}" class="btn btn-outline-danger">
+                        <a href="{% url 'user:delete_profil' request.user.username %}" class="btn btn-outline-danger">
                             <small>Supprimer mon compte</small>
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
                                  width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00"
@@ -148,6 +151,7 @@
                     </p>
                 </div>
             </div>
+            <!--LITLE SECTION FOR RESERVATIONS-->
             <div class="col-md-6 d-flex justify-content-center align-items-center">
                 <div class="text-center">
                     <h4>

@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -7,8 +8,8 @@ from .models import Reservation
 
 
 @login_required()
-def user_reservation(request, pk=None):
-    user = User.objects.get(id=pk)
+def user_reservation(request, pk):
+    user = get_user_model().objects.get(id=pk)
     reservations = user.reservation_set.all()
     total_reservations = reservations.count()
 
@@ -22,7 +23,7 @@ def user_reservation(request, pk=None):
 
 @login_required()
 def user_new_reservation(request, pk):
-    user = User.objects.get(id=pk)
+    user = get_user_model().objects.get(id=pk)
     form = ReservationForm(initial={'user': user})
 
     if request.method == 'POST':
@@ -53,7 +54,7 @@ def user_update_reservation(request, pk):
 
 
 @login_required()
-def user_delete_reservation(request, pk=None):
+def user_delete_reservation(request, pk):
     reservation = Reservation.objects.get(id=pk)
     if request.method == 'POST':
         reservation.delete()

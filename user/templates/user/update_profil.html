@@ -10,8 +10,9 @@
 <section class="container text-center pt-5 mt-5">
     <h1 class="mt-5 animate__animated  animate__slideInRight">Mettre à jour mes infos</h1>
     <div class="mx-auto py-5 col-md-6 col-sm-8 animate__animated  animate__slideInLeft">
+        <!--BACK BUTTON-->
         <div class="pb-3 text-start">
-            <a href="{% url 'user:user_home' request.user.id %}" class="btn btn-outline-secondary">
+            <a href="{% url 'user:user_home' request.user.username %}" class="btn btn-outline-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="32"
                      height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none"
                      stroke-linecap="round" stroke-linejoin="round">

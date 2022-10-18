@@ -11,8 +11,8 @@
             <form method="POST">
                 {% csrf_token %}
 
+                <!--CONFIRMATION TEXT-->
                 <h1>Voulez-vous vraiment supprimer votre compte ?</h1>
-
                 <p>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-triangle" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -23,6 +23,7 @@
                 </p>
 
                 <div class="pb-3">
+                    <!--DELETE BUTTON-->
                     <button type="submit" class="btn btn-outline-danger">
                         Supprimer
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-x" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -33,7 +34,8 @@
                             <path d="M10 12l4 4m0 -4l-4 4" />
                         </svg>
                     </button>
-                    <a href="{% url 'user:user_home' request.user.id %}" class="btn btn-outline-secondary ms-3">
+                    <!--BACK BUTTON-->
+                    <a href="{% url 'user:user_home' request.user.username %}" class="btn btn-outline-secondary ms-3">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" />

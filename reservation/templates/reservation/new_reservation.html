@@ -11,6 +11,7 @@
     <div class="container py-5 my-5">
         <div class="row">
             <div class="col-md-6 mx-auto">
+                <!--BACK BUTTON-->
                 <div class="pb-3">
                     <a href="{% url 'reservation:user_reservation' request.user.id %}" class="btn btn-outline-secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -20,6 +21,7 @@
                         retour réservations
                     </a>
                 </div>
+                <!--FORMULAIRE-->
                 <form method="POST">
                     {% csrf_token %}
                     <!--FULL NAME-->

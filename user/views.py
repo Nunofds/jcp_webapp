@@ -8,7 +8,8 @@ from django.contrib.auth import get_user_model
 
 
 @login_required(login_url='user:user_home')
-def user_home(request, pk=None):
+def user_home(request, username=None):
+
     context = {}
     return render(request, 'user/user_home.html', context)
 
@@ -34,8 +35,8 @@ def user_update_profil(request, username):
 
 
 @login_required(login_url='user:delete_profil')
-def user_delete_profil(request, pk=None):
-    user = User.objects.get(id=pk)
+def user_delete_profil(request, username=None):
+    user = get_user_model().objects.filter(username=username).first()
     if request.method == 'POST':
         user.delete()
         messages.success(request, 'Votre compte a bien été supprimé !')
