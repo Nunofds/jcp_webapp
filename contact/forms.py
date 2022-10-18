@@ -51,9 +51,12 @@ class ContactForm(forms.Form):
         )],
     )
 
-    message = forms.CharField(required=True, widget=forms.Textarea(
-        attrs={
-            'autofocus': True,
-            'class': 'form-control',
-            'placeholder': 'Votre nom complet'})
+    message = forms.CharField(
+        required=True,
+        widget=forms.Textarea(
+            attrs={
+                'autofocus': True,
+                'class': 'form-control',
+                'placeholder': 'Votre nom complet'}
+        )
     )

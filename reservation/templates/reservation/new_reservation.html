@@ -1,0 +1,102 @@
+{% extends 'main.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block styleshets %}
+<link rel="stylesheet" href="{% static 'css/reservation/reservation.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container py-5 my-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <!--BACK BUTTON-->
+                <div class="pb-3">
+                    <a href="{% url 'reservation:user_reservation' request.user.id %}" class="btn btn-outline-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" />
+                        </svg>
+                        retour réservations
+                    </a>
+                </div>
+                <!--FORMULAIRE-->
+                <form method="POST">
+                    {% csrf_token %}
+                    <!--FULL NAME-->
+                    <div class="form-group mt-3">
+                        {{ form.fullName.errors }}
+                        {% render_field form.fullName class="form-control" placeholder="Nom complet*" type="text" %}
+                    </div>
+                    <!--ADRESS-->
+                    <div class="form-group mt-3">
+                        {{ form.adress.errors }}
+                        {% render_field form.adress class="form-control" placeholder="Adresse*" type="text" %}
+                    </div>
+                    <!--CITY-->
+                    <div class="form-group mt-3">
+                        {{ form.city.errors }}
+                        {% render_field form.city class="form-control" placeholder="Vile*" type="text" %}
+                    </div>
+                    <!--ZIP_CODE-->
+                    <div class="form-group mt-3">
+                        {{ form.zip_code.errors }}
+                        {% render_field form.zip_code class="form-control" placeholder="Code postal*" type="text" %}
+                    </div>
+                    <!--EMAIL-->
+                    <div class="form-group mt-3">
+                        {{ form.email.errors }}
+                        {% render_field form.email class="form-control" placeholder="Email*" type="email" %}
+                    </div>
+                    <!--PHONE-->
+                    <div class="form-group mt-3">
+                        {{ form.phone.errors }}
+                        {% render_field form.phone class="form-control" placeholder="Votre téléphone*" type="phone" %}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!--DATE-->
+                            <div class="form-group mt-3">
+                                {{ form.date.errors }}
+                                {% render_field form.date class="form-control" placeholder="Date*" type="date" %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!--HOUR-->
+                            <div class="form-group mt-3">
+                                {{ form.hour.errors }}
+                                {% render_field form.hour class="form-control" placeholder="Heure*" type="time" %}
+                            </div>
+                        </div>
+                    </div>
+                    <!--MESSAGE-->
+                    <div class="form-group mt-3">
+                        {{ form.message.errors }}
+                        {% render_field form.message class="form-control" placeholder="Votre message*" type="text" %}
+                    </div>
+                    <!--MESSAGE-->
+                    <div class="form-group mt-3 no-display">
+                        {{ form.user.errors }}
+                        {% render_field form.user class="form-control" placeholder="user" type="hidden" %}
+                    </div>
+
+                    <!--BUTTON SUBMIT-->
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-outline-success">
+                            Envoyer
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

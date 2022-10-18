@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block styleshets %}{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+    <div class="container py-5 my-5">
+        <div class="pb-3">
+            <a href="{% url 'reservation:user_reservation' request.user.id %}" class="btn btn-outline-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" />
+                </svg>
+                retour réservations
+            </a>
+        </div>
+        <p>Détails de la réservation :</p>
+        <ul>
+            <li>ID: {{ reservation.id }}</li>
+            <li>Nom : {{ reservation.fullName }}</li>
+            <li>Date: {{ reservation.date }}</li>
+            <li>Heure: {{ reservation.hour }}</li>
+            <li>Adresse: {{ reservation.adress }}</li>
+            <li>Code Postal: {{ reservation.zip_code }}</li>
+            <li>Vile: {{ reservation.city }}</li>
+            <li>Email: {{ reservation.email }}</li>
+            <li>Téléphone: {{ reservation.phone }}</li>
+            <li>Message: {{ reservation.message }}</li>
+            <li>Rendez-vous acceptée: {{ reservation.accepted }}</li>
+            <li>Crée le: {{ reservation.created_at|date }}</li>
+        </ul>
+
+        <div class="py-5">
+            <form method="POST">
+                {% csrf_token %}
+                <!--DELETE CONFIRMATION TEXT-->
+                <h1>Voulez-vous vraiment supprimer cette réservation?</h1>
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-triangle" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M12 9v2m0 4v.01" />
+                        <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+                    </svg>
+                    En validant la suppression cette action est permanente.
+                </p>
+                <!--BACK BUTTON-->
+                <div class="pb-3">
+                    <button type="submit" class="btn btn-outline-danger">
+                    Supprimer
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-x" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M4 7h16" />
+                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                        <path d="M10 12l4 4m0 -4l-4 4" />
+                    </svg>
+                </button>
+                    <a href="{% url 'reservation:user_reservation' request.user.id %}" class="btn btn-outline-secondary ms-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" />
+                        </svg>
+                        retour réservations
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

@@ -11,16 +11,19 @@
     <div class="container">
         <div class="row">
             <div class="box col-md-6 my-5">
+                <!--PROFILE INFORMATIONS-->
                 <div class="p-3">
                     <div class="row py-2">
                         <div class="col-md-8">
                             <p>
                             <h2>Mes informations de Profil</h2></p>
                         </div>
+                        <!--UPDATE PROFILE BUTTON-->
                         <div class="col-md-4">
                             <p>
                             <h3>
-                                <a href="{% url 'user:update_profil' request.user.id %}" class="btn btn-outline-secondary" style="font-size:16px;">
+                                <a href="{% url 'user:update_profil' request.user.username %}"
+                                   class="btn btn-outline-secondary" style="font-size:16px;">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                          class="icon icon-tabler icon-tabler-settings"
                                          width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00"
@@ -29,10 +32,53 @@
                                         <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/>
                                         <circle cx="12" cy="12" r="3"/>
                                     </svg>
-                                    Editer</a>
+                                    Editer
+                                </a>
                             </h3>
                             </p>
                         </div>
+                        <div>
+                            <!--MESSAGES SUCCESS/ERROR-->
+                            {% for message in messages %}
+                            {% if message.tags == 'success' %}
+                            <div class="alert alert-success alert-dismissible d-flex justify-content-center" role="alert">
+                                <div>
+                                    <img src="{% static 'images/logo.png' %}" alt="logo entreprise"
+                                         style="width:60px;border-radius: 50%;">
+                                </div>
+                                <div>
+                                    <a href="{% url 'user:update_profil' request.user.id %}" class="close" data-dismiss="alert"
+                                       aria-label="close">&times;</a>
+                                    {{ message|safe|escape }}
+                                </div>
+                            </div>
+                            {% elif message.tags == 'error' %}
+                            <div class="alert alert-danger alert-dismissible d-flex justify-content-center" role="alert">
+                                <div>
+                                    <img src="{% static 'images/logo.png' %}" alt="logo entreprise"
+                                         style="width:60px;border-radius: 50%;">
+                                </div>
+                                <div>
+                                    <a href="{% url 'user:update_profil' request.user.id %}" class="close" data-dismiss="alert"
+                                       aria-label="close">&times;</a>
+                                    {{ message|safe|escape }}
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div>
+                        <p class="mb-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="30"
+                                 height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <circle cx="12" cy="7" r="4"/>
+                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                            </svg>
+                            <b>ID utilisateur</b></p>
+                        <p class="ms-5">{{ request.user.id }}</p>
                     </div>
                     <div>
                         <p class="mb-0">
@@ -86,9 +132,10 @@
                         <p class="ms-5">********</p>
                     </div>
                 </div>
+                <!--DELETE ACCOUNT-->
                 <div>
                     <p>
-                        <a href="" class="btn btn-outline-danger">
+                        <a href="{% url 'user:delete_profil' request.user.username %}" class="btn btn-outline-danger">
                             <small>Supprimer mon compte</small>
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
                                  width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00"
@@ -104,10 +151,11 @@
                     </p>
                 </div>
             </div>
+            <!--LITLE SECTION FOR RESERVATIONS-->
             <div class="col-md-6 d-flex justify-content-center align-items-center">
                 <div class="text-center">
                     <h4>
-                        <a href="{% url 'user:user_reservation' %}">Accéder a mes réservations</a>
+                        <a href="{% url 'reservation:user_reservation' request.user.id %}">Accéder a mes réservations</a>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event"
                              width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none"
                              stroke-linecap="round" stroke-linejoin="round">

@@ -7,14 +7,14 @@ from .forms import InscriptionForm, UserLoginForm
 from .my_captcha import FormWithCaptcha
 
 
-@user_not_authenticated()
+@user_not_authenticated
 def inscription(request):
     if request.method == 'POST':
         form = InscriptionForm(request.POST)
         if form.is_valid() and request.POST.get("g-recaptcha-response"):
             user = form.save()
             messages.success(request, f"Nouvelle compte crée pour: {user.username}")
-            return redirect('account:connexion')
+            return redirect('my_account:connexion')
         else:
             for error in list(form.errors.values()):
                 messages.error(request, error)
@@ -25,7 +25,7 @@ def inscription(request):
     return render(request, 'account/inscription.html', context)
 
 
-@user_not_authenticated()
+@user_not_authenticated
 def connexion(request):
     if request.method == "POST":
         form = UserLoginForm(request=request, data=request.POST)
@@ -36,8 +36,8 @@ def connexion(request):
             )
             if user is not None:
                 login(request, user)
-                messages.success(request, f"Bienvenue <b>{user.username}</b>! Vous avez été connecté!")
-                return redirect("user:user_home")
+                messages.success(request, f"Bienvenue {user.username} ! Vous êtes connecté!")
+                return redirect("user:user_home", request.user.username)
         else:
             for error in list(form.errors.values()):
                 messages.error(request, error)
@@ -49,11 +49,11 @@ def connexion(request):
     return render(request, "account/connexion.html", context)
 
 
-@login_required()
+@login_required
 def logout_user(request):
     logout(request)
     messages.info(request, "Vous êtes bien déconnecté!")
-    return redirect('account:connexion')
+    return redirect('my_account:connexion')
 
 
 def rgpd(request):

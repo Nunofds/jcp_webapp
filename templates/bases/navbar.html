@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home:home' %}"><img src="{% static 'images/logo.png' %}" alt="logo entreprise"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -23,11 +23,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'contact:contact' %}">Contact</a>
                 </li>
-                {% if not request.user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'reservation:reservation' %}">Agenda</a>
-                </li>
-                {% endif %}
                 {% if request.user.is_authenticated %}
                 <li class="nav-item dropdown me-5 mx-3">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,7 +35,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li>
-                            <a class="dropdown-item" href="{% url 'user:user_home' %}">
+                            <a class="dropdown-item" href="{% url 'user:user_home' request.user.username %}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                     <circle cx="12" cy="7" r="4" />
@@ -50,7 +45,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{% url 'user:user_reservation' %}">
+                            <a class="dropdown-item" href="{% url 'reservation:user_reservation' request.user.id %}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-event" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                     <rect x="4" y="5" width="16" height="16" rx="2" />
@@ -64,7 +59,7 @@
                         </li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
-                            <a class="dropdown-item" href="{% url 'account:logout' %}">
+                            <a class="dropdown-item" href="{% url 'my_account:logout' %}">
                             me déconnecter
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -76,7 +71,7 @@
                     </ul>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="{% url 'account:logout' %}" class="nav-link p-1" title="Me déconnecter du compte.">
+                    <a href="{% url 'my_account:logout' %}" class="nav-link p-1" title="Me déconnecter du compte.">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="32"
                              height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none"
                              stroke-linecap="round" stroke-linejoin="round">
@@ -90,7 +85,7 @@
                 <!--connexion/inscription/logout-->
                 <ul class="connection-icons d-flex">
                     <li class="px-2">
-                        <a href="{% url 'account:connexion' %}" class="p-1" title="Connexion au compte utilisateur.">
+                        <a href="{% url 'my_account:connexion' %}" class="p-1" title="Connexion au compte utilisateur.">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check"
                                  width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none"
                                  stroke-linecap="round" stroke-linejoin="round">
@@ -102,7 +97,7 @@
                         </a>
                     </li>
                     <li class="px-2">
-                        <a href="{% url 'account:inscription' %}" class="p-1" title="Créer un compte utilisateur.">
+                        <a href="{% url 'my_account:inscription' %}" class="p-1" title="Créer un compte utilisateur.">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus"
                                  width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none"
                                  stroke-linecap="round" stroke-linejoin="round">

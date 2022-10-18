@@ -27,7 +27,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,6 +46,8 @@ INSTALLED_APPS = [
     'account',
     'widget_tweaks',
 ]
+
+# AUTH_USER_MODEL = "account.CustomUser"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,6 +131,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / STATIC_URL
 ]
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # modified the default backends by my personal backends for login with username or email
 AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend']
