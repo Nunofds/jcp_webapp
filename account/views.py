@@ -13,7 +13,7 @@ def inscription(request):
         form = InscriptionForm(request.POST)
         if form.is_valid() and request.POST.get("g-recaptcha-response"):
             user = form.save()
-            messages.success(request, f"Nouvelle compte crée pour: {user.username}")
+            messages.success(request, f"Nouveau compte crée pour: {user.username}")
             return redirect('my_account:connexion')
         else:
             for error in list(form.errors.values()):
