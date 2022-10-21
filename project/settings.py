@@ -148,9 +148,15 @@ RECAPTCHA_PRIVATE_KEY = '6LdQdk0iAAAAAJyPha5PDIDJYNti913sv5wVP41b'
 RECAPTCHA_REQUIRED_SCORE = 0.85
 
 # send email settings
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = '1025'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False
-# EMAIL_USE_SSL = False
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'n.fernandes.contact@gmail.com'
+EMAIL_HOST_USER = 'n.fernandes.contact@gmail.com'
+EMAIL_HOST_PASSWORD = 'xcobhxifzortafea'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# Token valid for 4h
+PASSWORD_RESET_TIMEOUT = 14400
+
+# MDP
+# xcobhxifzortafea

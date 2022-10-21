@@ -7,5 +7,7 @@ Pillow
 django-widget-tweaks
 recaptcha
 django-filter~=22.1
+six~=1.16.0
 
+# to run email simulation
 code for test send mail: python -m smtpd -n -c DebuggingServer localhost:1025

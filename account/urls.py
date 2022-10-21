@@ -8,4 +8,5 @@ urlpatterns = [
     path('rgpd/', views.rgpd, name='rgpd'),
     path('connexion/', views.connexion, name='connexion'),
     path('inscription/', views.inscription, name='inscription'),
+    path('activate/<uidb64>/<token>/', views.activate, name='activate'),
 ]

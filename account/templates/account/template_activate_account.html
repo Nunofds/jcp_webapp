@@ -1,0 +1,12 @@
+{% autoescape off %}
+Bonjour {{ user.username }},
+
+Vous venez de vous inscrire sur notre site web 'joaocerqueirapereira.com'.
+
+Pour activer votre compte et confirmer votre inscription, veuillez cliquer sur le lien ci-dessous :
+
+http://{{ domain }}{% url 'my_account:activate' uidb64=uid token=token %}
+
+Merci de votre inscription.
+
+{% endautoescape %}

@@ -1,10 +1,59 @@
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .decorators import user_not_authenticated
 from django.contrib import messages
 from .forms import InscriptionForm, UserLoginForm
 from .my_captcha import FormWithCaptcha
+from django.template.loader import render_to_string
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
+from django.core.mail import EmailMessage
+from .tokens import account_activation_token
+
+
+def activate(request, uidb64, token):
+    User = get_user_model()
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except:
+        user = None
+
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, f"Merci pour votre e-mail de confirmation. Vous pouvez maintenant vous connecter \
+        à votre compte.")
+        return redirect('my_account:connexion')
+    else:
+        messages.error(request, "Le lien d'activation est invalide!")
+
+    return redirect('my_account:connexion')
+
+
+# fonction with the message, to send an email after inscription
+def activateEmail(request, user, to_email):
+    mail_subject = "Activez votre compte utilisateur."
+    message = render_to_string(
+        'account/template_activate_account.html', {
+            'user': user.username,
+            'domain': get_current_site(request).domain,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': account_activation_token.make_token(user),
+            'protocol': 'https' if request.is_secure() else 'http',
+        }
+    )
+    email = EmailMessage(mail_subject, message, to=[to_email])
+    if email.send():
+        messages.success(request, f'Cher <b>{user}</b>, veuillez accéder à votre boîte de réception <b>{to_email}</b> et \
+                                    cliquer sur le lien d\'activation reçu pour confirmer et terminer l\'inscription. \
+                                    <b>Remarque:</b> vérifiez votre dossier spam.')
+        return redirect('my_account:connexion')
+    else:
+        messages.error(request, f"Problème d'envoi de l'e-mail de confirmation à {to_email}, vérifiez si vous l'avez \
+                                tapé correctement.")
 
 
 @user_not_authenticated
@@ -12,9 +61,13 @@ def inscription(request):
     if request.method == 'POST':
         form = InscriptionForm(request.POST)
         if form.is_valid() and request.POST.get("g-recaptcha-response"):
-            user = form.save()
-            messages.success(request, f"Nouveau compte crée pour: {user.username}")
-            return redirect('my_account:connexion')
+            user = form.save(commit=False)
+            user.is_active = False
+            user.save()
+            activateEmail(request, user, form.cleaned_data.get('email'))
+
+            # messages.success(request, f"Nouveau compte crée pour: {user.username}")
+            # return redirect('my_account:connexion')
         else:
             for error in list(form.errors.values()):
                 messages.error(request, error)
