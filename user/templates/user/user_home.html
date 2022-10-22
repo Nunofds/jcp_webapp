@@ -37,25 +37,11 @@
                             </h3>
                             </p>
                         </div>
+                        <!--MESSAGES SUCCESS/ERROR-->
                         <div>
-                            <!--MESSAGES SUCCESS/ERROR-->
                             {% for message in messages %}
                             {% if message.tags == 'success' %}
                             <div class="alert alert-success alert-dismissible d-flex justify-content-center"
-                                 role="alert">
-                                <div>
-                                    <img src="{% static 'images/logo.png' %}" alt="logo entreprise"
-                                         style="width:60px;border-radius: 50%;">
-                                </div>
-                                <div>
-                                    <a href="{% url 'user:update_profil' request.user.id %}" class="close"
-                                       data-dismiss="alert"
-                                       aria-label="close">&times;</a>
-                                    {{ message|safe|escape }}
-                                </div>
-                            </div>
-                            {% elif message.tags == 'error' %}
-                            <div class="alert alert-danger alert-dismissible d-flex justify-content-center"
                                  role="alert">
                                 <div>
                                     <img src="{% static 'images/logo.png' %}" alt="logo entreprise"

@@ -9,7 +9,8 @@ nav {
     /* background: var(--black); */
     /* background: #F4F4F4; */
     /* background: #ECECEC; */
-    background: #fff;
+    /* background: #fff; */
+    background: #dddddd50;
 }
 nav .navbar-brand img{
     width: 46px;
@@ -22,15 +23,18 @@ nav .connection-icons li a svg:hover{
     transform: scale(1.1);
     transition: easy-in .3s;
 }
+
 .navbar .navbar-nav .nav-item .nav-link{
-    color: #ffbf00;
+    /* color: #ffbf00; */
+    /* color: #DEB319; */
+    color: #8A7900;
     height: 60px;
     line-height: 40px;
     font-weight: bold;
     font-size: 1.1rem;
 }
 .navbar .navbar-nav .nav-item .nav-link:hover{
-    background: var(--yellow-30)
+    background: var(--yellow-30);
 }
 
 /* BURGUER BUTTON */
