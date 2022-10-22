@@ -122,7 +122,7 @@ def password_change(request):
         if form.is_valid():
             form.save()
             messages.success(request, f"""<b>{user.username}</b> Votre mot de passe a bien été modifié! <br>
-                                        Veuillez vous reconnecter! """)
+                                        Veuillez vos reconnecter! """)
             return redirect('my_account:connexion')
         else:
             for error in list(form.errors.values()):
@@ -188,8 +188,33 @@ def password_reset(request):
 # Confirm password reset for users (template)
 @user_not_authenticated
 def password_reset_confirm(request, uidb64, token):
-    context = {}
-    return render(request, 'account/rgpd.html', context)
+    User = get_user_model()
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except:
+        user = None
+
+    if user is not None and account_activation_token.check_token(user, token):
+        if request.method == 'POST':
+            form = SetNewPasswordForm(user, request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Votre mot de passe a été modifié.<br>Vous pouvez vous connecter.")
+                return redirect('my_account:connexion')
+            else:
+                for error in list(form.errors.values()):
+                    messages.error(request, error)
+
+        form = SetNewPasswordForm(user)
+
+        context = {'form': form}
+        return render(request, 'account/password_reset.html', context)
+    else:
+        messages.error(request, "Le lien d'activation a expiré!")
+
+    messages.error(request, 'Un problème est survenu !')
+    return redirect('my_account:connexion')
 
 
 # users logout
