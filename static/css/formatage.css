@@ -1,15 +1,25 @@
-*, html, body {
+*,
+html,
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'lato', sans-serif;
+    font-family: "lato", sans-serif;
 }
 
 h1 {
-    color: #DEB319;
+    color: #deb319;
     font-weight: bold;
 }
 
-body{
+body {
     background: #dddddd50;
+}
+
+.info_alert_message {
+    display: block;
+}
+
+#close_alert_message{
+    cursor: pointer;
 }
