@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, SetPasswordForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, SetPasswordForm, PasswordResetForm
 from django.core.validators import RegexValidator
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
@@ -30,14 +30,6 @@ class InscriptionForm(UserCreationForm, ReCaptchaField):
             raise forms.ValidationError('Un compte avec ce email existe déjà.')
         return email
 
-    # fonction for save form with some personalisation for email
-    # def save(self, commit=True):
-    #     user = super(InscriptionForm, self).save(commit=False)
-    #     user.email = self.cleaned_data['email']
-    #     if commit:
-    #         user.save()
-    #     return user
-
 
 # LOGIN
 class UserLoginForm(AuthenticationForm):
@@ -59,8 +51,14 @@ class UserLoginForm(AuthenticationForm):
                                )
 
 
-# PASWWORD CHANGE
+# PASSWORD CHANGE
 class SetNewPasswordForm(SetPasswordForm):
     class Meta:
         model = get_user_model()
         fields = ['new_password1', 'new_password2']
+
+
+# PASSWORD RESET
+class ResetPasswordForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super(ResetPasswordForm, self).__init__(*args, **kwargs)

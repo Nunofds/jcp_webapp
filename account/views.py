@@ -1,6 +1,7 @@
 from django.contrib.auth import login, logout, authenticate, get_user_model
+from django.db.models import Q
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from .forms import InscriptionForm, UserLoginForm, SetNewPasswordForm
+from .forms import InscriptionForm, UserLoginForm, SetNewPasswordForm, ResetPasswordForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.decorators import login_required
 from django.utils.encoding import force_bytes, force_str
@@ -73,6 +74,10 @@ def inscription(request):
         else:
             for error in list(form.errors.values()):
                 messages.error(request, error)
+
+        if not request.POST.get("g-recaptcha-response"):
+            messages.error(request, 'Le champ CAPTCHA est obligatoire!')
+
     else:
         form = InscriptionForm()
 
@@ -98,6 +103,9 @@ def connexion(request):
             for error in list(form.errors.values()):
                 messages.error(request, error)
 
+        if not request.POST.get("g-recaptcha-response"):
+            messages.error(request, 'Le champ CAPTCHA est obligatoire!')
+
     form = UserLoginForm()
     captcha = FormWithCaptcha
 
@@ -106,6 +114,7 @@ def connexion(request):
 
 
 # Passsword change for users
+@login_required
 def password_change(request):
     user = request.user
     if request.method == 'POST':
@@ -123,6 +132,64 @@ def password_change(request):
 
     context = {'form': form}
     return render(request, 'account/password_change.html', context)
+
+
+# Password reset for users
+@user_not_authenticated
+def password_reset(request):
+    if request.method == 'POST':
+        form = ResetPasswordForm(request.POST)
+        if form.is_valid() and request.POST.get("g-recaptcha-response"):
+            user_email = form.cleaned_data['email']
+            associated_user = get_user_model().objects.filter(Q(email=user_email)).first()
+            if associated_user:
+                subject = "Récupération du mot de passe"
+                message = render_to_string(
+                    'account/template_reset_password.html', {
+                        'user': associated_user.username,
+                        'domain': get_current_site(request).domain,
+                        'uid': urlsafe_base64_encode(force_bytes(associated_user.pk)),
+                        'token': account_activation_token.make_token(associated_user),
+                        'protocol': 'https' if request.is_secure() else 'http',
+                    }
+                )
+                email = EmailMessage(subject, message, to=[associated_user.email])
+                if email.send():
+                    messages.success(request, """
+                                                <p>Réinitialisation du mot de passe envoyée</h2><hr>
+                                                <p>
+                                                    Nous vous avons envoyé par e-mail des instructions pour définir \
+                                                    votre mot de passe.
+                                                    <br>
+                                                    Si vous ne recevez pas d'e-mail, assurez-vous d'avoir saisi le bon \
+                                                    adresse e-mail.
+                                                    <br>
+                                                    Vérifiez votre dossier spam.
+                                                </p>
+                                                """)
+                else:
+                    messages.error(request, f""" Problème d'envoi de l'e-mail de réinitialisation du mot de passe, \
+                                                <b>PROBLÈME DE SERVEUR</b> """)
+            return redirect('my_account:connexion')
+
+        if not request.POST.get("g-recaptcha-response"):
+            messages.error(request, 'Le champ CAPTCHA est obligatoire!')
+
+    form = ResetPasswordForm()
+    captcha = FormWithCaptcha
+
+    context = {
+        'form': form,
+        'captcha': captcha
+    }
+    return render(request, 'account/password_reset.html', context)
+
+
+# Confirm password reset for users (template)
+@user_not_authenticated
+def password_reset_confirm(request, uidb64, token):
+    context = {}
+    return render(request, 'account/rgpd.html', context)
 
 
 # users logout

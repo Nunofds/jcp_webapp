@@ -20,8 +20,8 @@
             <div class="connexion_img col-md-6 col-sm-12 animate__animated animate__slideInLeft">
             </div>
             <div class="text-start col-md-6 col-sm-12">
-                 <!--errors-->
-                 {% include 'errors/messaging.html' %}
+                <!--errors-->
+                {% include 'errors/messaging.html' %}
                 <!--form-->
                 <form method="POST">
                     {% csrf_token %}
@@ -43,9 +43,10 @@
                     <button type="submit" class="btn btn-warning mt-3">Me connecter</button>
                 </form>
                 <div>
-                    <small>Vous n'avez pas de compte ? <a href="{% url 'my_account:inscription' %}"> M'inscrire</a></small><br>
-                     <small class="text-muted">
-                        <a href="#">Mot de passe oublié ?</a>
+                    <small>Vous n'avez pas de compte ? <a href="{% url 'my_account:inscription' %}">
+                        M'inscrire</a></small><br>
+                    <small class="text-muted">
+                        <a href="{% url 'my_account:password_reset' %}">Mot de passe oublié ?</a>
                     </small>
                 </div>
             </div>
