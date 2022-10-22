@@ -1,9 +1,9 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, SetPasswordForm
 from django.core.validators import RegexValidator
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from captcha.fields import ReCaptchaField
 from django import forms
-from account.decorators import user_not_authenticated
 
 
 # REGISTER
@@ -49,11 +49,18 @@ class UserLoginForm(AuthenticationForm):
             'autofocus': True,
             'class': 'form-control',
             'placeholder': 'Nom d\'utilisateur ou email'}),
-    )
+                               )
 
     password = forms.CharField(required=True, widget=forms.PasswordInput(
         attrs={
             'autofocus': True,
             'class': 'form-control',
             'placeholder': 'Mot de passe'}),
-    )
+                               )
+
+
+# PASWWORD CHANGE
+class SetNewPasswordForm(SetPasswordForm):
+    class Meta:
+        model = get_user_model()
+        fields = ['new_password1', 'new_password2']

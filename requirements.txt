@@ -5,6 +5,7 @@ mysql
 mysqlclient
 Pillow
 django-widget-tweaks
+django-crispy-forms
 recaptcha
 django-filter~=22.1
 six~=1.16.0

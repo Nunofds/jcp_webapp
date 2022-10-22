@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'contact',
     'account',
     'widget_tweaks',
+    'crispy_forms',
 ]
 
 # AUTH_USER_MODEL = "account.CustomUser"
@@ -133,6 +134,11 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# config for crispy forms style with bootstrap5
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = '/'
 
 # modified the default backends by my personal backends for login with username or email
 AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend']

@@ -1,18 +1,19 @@
 from django.contrib.auth import login, logout, authenticate, get_user_model
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from .decorators import user_not_authenticated
-from django.contrib import messages
-from .forms import InscriptionForm, UserLoginForm
-from .my_captcha import FormWithCaptcha
-from django.template.loader import render_to_string
-from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from .forms import InscriptionForm, UserLoginForm, SetNewPasswordForm
+from django.contrib.sites.shortcuts import get_current_site
+from django.contrib.auth.decorators import login_required
 from django.utils.encoding import force_bytes, force_str
-from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from .decorators import user_not_authenticated
+from django.shortcuts import render, redirect
 from .tokens import account_activation_token
+from django.core.mail import EmailMessage
+from .my_captcha import FormWithCaptcha
+from django.contrib import messages
 
 
+# validate inscription by link send to email
 def activate(request, uidb64, token):
     User = get_user_model()
     try:
@@ -33,7 +34,7 @@ def activate(request, uidb64, token):
     return redirect('my_account:connexion')
 
 
-# fonction with the message, to send an email after inscription
+# function with the message, to send an email after inscription
 def activateEmail(request, user, to_email):
     mail_subject = "Activez votre compte utilisateur."
     message = render_to_string(
@@ -56,6 +57,7 @@ def activateEmail(request, user, to_email):
                                 tapé correctement.")
 
 
+# users inscription
 @user_not_authenticated
 def inscription(request):
     if request.method == 'POST':
@@ -78,6 +80,7 @@ def inscription(request):
     return render(request, 'account/inscription.html', context)
 
 
+# users connexion
 @user_not_authenticated
 def connexion(request):
     if request.method == "POST":
@@ -102,6 +105,27 @@ def connexion(request):
     return render(request, "account/connexion.html", context)
 
 
+# Passsword change for users
+def password_change(request):
+    user = request.user
+    if request.method == 'POST':
+        form = SetNewPasswordForm(user, request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f"""<b>{user.username}</b> Votre mot de passe a bien été modifié! <br>
+                                        Veuillez vous reconnecter! """)
+            return redirect('my_account:connexion')
+        else:
+            for error in list(form.errors.values()):
+                messages.error(request, error)
+    else:
+        form = SetNewPasswordForm(user)
+
+    context = {'form': form}
+    return render(request, 'account/password_change.html', context)
+
+
+# users logout
 @login_required
 def logout_user(request):
     logout(request)
@@ -109,6 +133,7 @@ def logout_user(request):
     return redirect('my_account:connexion')
 
 
+# rgpd page
 def rgpd(request):
     context = {}
     return render(request, 'account/rgpd.html', context)
