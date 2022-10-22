@@ -29,6 +29,11 @@
 .partners {
     padding: 60px;
 }
+
+.partners .container{
+    background: #ffffff;
+}
+
 .partners img{
     width: 250px;
 }
