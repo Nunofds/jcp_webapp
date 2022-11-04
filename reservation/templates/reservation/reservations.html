@@ -114,7 +114,13 @@
         <!--SHOW TEXT 'NOT FOUND RESERVATIONS'-->
             {% else %}
                 <tr>
-                    <td colspan="10">Aucune reservation trouvé !</td>
+                    <td colspan="10">
+                        <i>
+                            Vous n'avez actuellement aucune reservation.
+                            <br>
+                            Vous pouvez prendre un rendez-vous en cliquant sur le bouton 'Nouvelle réservation' !
+                        </i>
+                    </td>
                 </tr>
         {% endif %}
         </tbody>
@@ -122,7 +128,7 @@
     
 <!--NEW RESERVATION BUTTON-->
     <div>
-        <a href="{% url 'reservation:user_new_reservation' request.user.id %}" class="btn btn-outline-info">
+        <a href="{% url 'reservation:user_new_reservation' request.user.id %}" class="btn btn-outline-success">
             Nouvelle réservation
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

@@ -1,7 +1,6 @@
-from django.contrib.auth import login, logout, authenticate, get_user_model
-from django.db.models import Q
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .forms import InscriptionForm, UserLoginForm, SetNewPasswordForm, ResetPasswordForm
+from django.contrib.auth import login, logout, authenticate, get_user_model
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.decorators import login_required
 from django.utils.encoding import force_bytes, force_str
@@ -12,6 +11,7 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from .my_captcha import FormWithCaptcha
 from django.contrib import messages
+from django.db.models import Q
 
 
 # validate inscription by link send to email
@@ -168,7 +168,7 @@ def password_reset(request):
                                                 </p>
                                                 """)
                 else:
-                    messages.error(request, f""" Problème d'envoi de l'e-mail de réinitialisation du mot de passe, \
+                    messages.error(request, """ Problème d'envoi de l'e-mail de réinitialisation du mot de passe, \
                                                 <b>PROBLÈME DE SERVEUR</b> """)
             return redirect('my_account:connexion')
 

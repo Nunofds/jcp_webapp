@@ -12,6 +12,10 @@ nav {
     /* background: #fff; */
     background: #dddddd50;
 }
+.navbar-collapse{
+    background: #F4F4F4;
+}
+
 nav .navbar-brand img{
     width: 46px;
     border-radius: 50%;
@@ -37,13 +41,6 @@ nav .connection-icons li a svg:hover{
     background: var(--yellow-30);
 }
 
-/* BURGUER BUTTON */
-.navbar-light .navbar-toggler{
-    color: rgb(255, 255, 255) !important;
-    border-color: rgb(255, 255, 255) !important;
-    background: rgba(249, 196, 3, .3) !important;
-}
-q
 /* MEDIA QUERY */
 @media screen and (max-width: 680px){
     .collapse .navbar-nav .nav-item {
