@@ -10,16 +10,16 @@
 <section class="user_profile py-5 my-5">
     <div class="container">
         <div class="row my-5">
-            <div class="box col-md-4">
+            <div class="box col-lg-4 col-md-12">
                 <!--PROFILE INFORMATIONS-->
                 <div class="p-3">
                     <div class="row py-2">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <p>
                             <h2>Mes informations de Profil</h2></p>
                         </div>
                         <!--UPDATE PROFILE BUTTON-->
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <p>
                             <h3>
                                 <a href="{% url 'user:update_profil' request.user.username %}"
@@ -134,7 +134,7 @@
                 </div>
             </div>
             <!--LITLE SECTION FOR RESERVATIONS-->
-            <div class="box box-reservations col-md-8">
+            <div class="box box-reservations col-lg-8 col-md-12">
                 <!--PROFILE INFORMATIONS-->
                 <div class="p-3">
                     <div class="row py-2">
@@ -164,42 +164,44 @@
                     </div>
                     <!--                    -->
                     <!--TABLE-->
-                    <table class="table table-striped table-warning">
-                        <thead>
-                        <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Code Postal</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Heure</th>
-                            <th scope="col">Validé ?</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!--SHOW TABLE IF FOUND RESERVATIONS-->
-                        {% if total_reservations > 0 %}
-                        {% for reservation in reservations %}
-                        <tr>
-                            <td scope="row">{{ reservation.fullName }}</td>
-                            <td scope="row">{{ reservation.zip_code }}</td>
-                            <td scope="row">{{ reservation.date }}</td>
-                            <td scope="row">{{ reservation.hour }}</td>
-                            <td scope="row">
-                                {% if reservation.accepted %}
-                                Oui
-                                {% else %}
-                                Non
-                                {% endif %}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                        <!--SHOW TEXT 'NOT FOUND RESERVATIONS'-->
-                        {% else %}
-                        <tr>
-                            <td colspan="10">Aucune reservation trouvé !</td>
-                        </tr>
-                        {% endif %}
-                        </tbody>
-                    </table>
+                    <div class="table-responsive-md">
+                        <table class="table table-striped table-warning">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Code Postal</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Heure</th>
+                                <th scope="col">Validé ?</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!--SHOW TABLE IF FOUND RESERVATIONS-->
+                            {% if total_reservations > 0 %}
+                            {% for reservation in reservations %}
+                            <tr>
+                                <td scope="row">{{ reservation.fullName }}</td>
+                                <td scope="row">{{ reservation.zip_code }}</td>
+                                <td scope="row">{{ reservation.date }}</td>
+                                <td scope="row">{{ reservation.hour }}</td>
+                                <td scope="row">
+                                    {% if reservation.accepted %}
+                                    Oui
+                                    {% else %}
+                                    Non
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <!--SHOW TEXT 'NOT FOUND RESERVATIONS'-->
+                            {% else %}
+                            <tr>
+                                <td colspan="10">Aucune reservation trouvé !</td>
+                            </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

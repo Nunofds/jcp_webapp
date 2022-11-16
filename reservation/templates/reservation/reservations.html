@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block styleshets %}
+<link rel="stylesheet" href="{% static 'css/reservation/reservation.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -19,7 +20,7 @@
 </h1>
 
 
-<div class="container-fluid py-5">
+<div class="container-fluid py-5 reservation-box">
     <div>
         <p>Nombre total de réservations: <span><i><b>{{ total_reservations }}</b></i></span></p>
     </div>
@@ -53,78 +54,81 @@
         {% endif %}
     {% endfor %}
     </div>
-    <!--TABLE-->
-    <table class="table table-striped table-warning">
-        <thead>
-        <tr>
-            <th scope="col">Nom</th>
-            <th scope="col">Adresse</th>
-            <th scope="col">Code Postal</th>
-            <th scope="col">Vile</th>
-            <th scope="col">Date</th>
-            <th scope="col">Heure</th>
-            <th scope="col">Message</th>
-            <th scope="col">Validé ?</th>
-<!--            <th scope="col">user_id</th>-->
-            <th scope="col">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!--SHOW TABLE IF FOUND RESERVATIONS-->
-        {% if total_reservations > 0 %}
-            {% for reservation in reservations %}
-                <tr>
-                    <td scope="row">{{ reservation.fullName }}</td>
-                    <td scope="row">{{ reservation.adress }}</td>
-                    <td scope="row">{{ reservation.zip_code }}</td>
-                    <td scope="row">{{ reservation.city }}</td>
-                    <td scope="row">{{ reservation.date }}</td>
-                    <td scope="row">{{ reservation.hour }}</td>
-                    <td scope="row">{{ reservation.message }}</td>
-                    <td scope="row">
-                        {% if reservation.accepted %}
-                            Oui
-                        {% else %}
-                            Non
-                        {% endif %}
-                    </td>
-<!--                    <td scope="row">{{ reservation.user_id }}</td>-->
-                    <td scope="row">
-                        <a href="{% url 'reservation:user_update_reservation' reservation.id %}" class="btn btn-outline-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                                <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-                                <line x1="16" y1="5" x2="19" y2="8" />
-                            </svg>
-                        </a>
-                        <a href="{% url 'reservation:user_delete_reservation' reservation.id %}" class="btn btn-outline-danger">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <line x1="4" y1="7" x2="20" y2="7" />
-                                <line x1="10" y1="11" x2="10" y2="17" />
-                                <line x1="14" y1="11" x2="14" y2="17" />
-                                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                            </svg>
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
-        <!--SHOW TEXT 'NOT FOUND RESERVATIONS'-->
-            {% else %}
-                <tr>
-                    <td colspan="10">
-                        <i>
-                            Vous n'avez actuellement aucune reservation.
-                            <br>
-                            Vous pouvez prendre un rendez-vous en cliquant sur le bouton 'Nouvelle réservation' !
-                        </i>
-                    </td>
-                </tr>
-        {% endif %}
-        </tbody>
-    </table>
+    <div class="responsive-table">
+        <!--TABLE-->
+        <table class="table table-striped table-warning">
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Code Postal</th>
+                <th scope="col">Vile</th>
+                <th scope="col">Date</th>
+                <th scope="col">Heure</th>
+                <th scope="col">Message</th>
+                <th scope="col">Validé ?</th>
+    <!--            <th scope="col">user_id</th>-->
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--SHOW TABLE IF FOUND RESERVATIONS-->
+            {% if total_reservations > 0 %}
+                {% for reservation in reservations %}
+                    <tr>
+                        <td data-label="Nom:" scope="row">{{ reservation.fullName }}</td>
+                        <td data-label="Adresse:" scope="row">{{ reservation.adress }}</td>
+                        <td data-label="Code Postal:" scope="row">{{ reservation.zip_code }}</td>
+                        <td data-label="Vile:" scope="row">{{ reservation.city }}</td>
+                        <td data-label="Date:" scope="row">{{ reservation.date }}</td>
+                        <td data-label="Heure:" scope="row">{{ reservation.hour }}</td>
+                        <td data-label="Message:" scope="row">{{ reservation.message }}</td>
+                        <td data-label="Validé ?:" scope="row">
+                            {% if reservation.accepted %}
+                                Oui
+                            {% else %}
+                                Non
+                            {% endif %}
+                        </td>
+    <!--                    <td scope="row">{{ reservation.user_id }}</td>-->
+                        <td scope="row">
+                            <a href="{% url 'reservation:user_update_reservation' reservation.id %}" class="btn btn-outline-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                                    <line x1="16" y1="5" x2="19" y2="8" />
+                                </svg>
+                            </a>
+                            <a href="{% url 'reservation:user_delete_reservation' reservation.id %}" class="btn btn-outline-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="4" y1="7" x2="20" y2="7" />
+                                    <line x1="10" y1="11" x2="10" y2="17" />
+                                    <line x1="14" y1="11" x2="14" y2="17" />
+                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            <!--SHOW TEXT 'NOT FOUND RESERVATIONS'-->
+                {% else %}
+                    <tr>
+                        <td colspan="10">
+                            <i>
+                                Vous n'avez actuellement aucune reservation.
+                                <br>
+                                Vous pouvez prendre un rendez-vous en cliquant sur le bouton 'Nouvelle réservation' !
+                            </i>
+                        </td>
+                    </tr>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+
     
 <!--NEW RESERVATION BUTTON-->
     <div>

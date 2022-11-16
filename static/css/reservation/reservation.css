@@ -7,3 +7,27 @@
 .confirmation-message{
     color: tomato;
 }
+
+/* responsive table */
+.responsive-table{
+    overflow-x:auto;
+}
+
+@media screen and (max-width: 1024px){
+    .table thead {
+        display: none;
+    }
+    .table tr{
+        display: block;
+        margin-bottom: 40px;
+    }
+    .table td {
+        display: block;
+        text-align: right;
+    }
+    .table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+}

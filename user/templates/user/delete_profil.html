@@ -2,7 +2,9 @@
 {% load widget_tweaks %}
 {% load static %}
 
-{% block styleshets %}{% endblock %}
+{% block styleshets %}
+<link rel="stylesheet" href="{% static 'css/reservation/reservation.css' %}">
+{% endblock %}
 
 {% block content %}
 <section class="container py-5">
@@ -13,7 +15,7 @@
 
                 <!--CONFIRMATION TEXT-->
                 <h1>Voulez-vous vraiment supprimer votre compte ?</h1>
-                <p>
+                <p class="confirmation-message">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-triangle" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M12 9v2m0 4v.01" />
