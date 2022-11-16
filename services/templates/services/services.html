@@ -14,19 +14,12 @@
         <div class="row text-center">
             {% for service in services %}
             <div class="col-lg-4 col-md-6 col-sm-12 my-3 animate__animated  animate__slideInRight">
-                <div class="card mb-3" style="max-width:540px;min-height:100px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            {% if service.image %}
-                            <img src="{{ service.image.url|default_if_none:'#' }}" class="img-fluid rounded-start" alt="{{ service.name }}" style="min-height:100px;">
-                            {% endif %}
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">{{service.name}}</h5>
-<!--                                <p class="card-text">{{service.desc}}</p>-->
-                            </div>
-                        </div>
+                <div class="card" style="width: 18rem;">
+                    {% if service.image %}
+                    <img src="{{ service.image.url|default_if_none:'#' }}" class="card-img-top" alt="{{ service.name }}" style="min-height:100px;max-height:150px;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{service.name}}</h5>
                     </div>
                 </div>
             </div>
@@ -34,6 +27,4 @@
         </div>
     </div>
 </section>
-
-
 {% endblock %}
