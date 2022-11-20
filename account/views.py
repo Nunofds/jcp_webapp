@@ -35,7 +35,7 @@ def activate(request, uidb64, token):
     return redirect('my_account:connexion')
 
 
-# function with the message, to send an email after inscription
+# function to send an email after inscription
 def activateEmail(request, user, to_email):
     mail_subject = "Activez votre compte utilisateur."
     message = render_to_string(
